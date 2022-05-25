@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/akapa/Documents/Computer Systems Assignments Year 3/COMPSYS 302/project-2-team-13/app/src/main/res/layout/activity_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/akapa/Documents/Computer Systems Assignments Year 3/COMPSYS 302/project-2-team-13/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/akapa/Documents/Computer Systems Assignments Year 3/COMPSYS 302/project-2-team-13/app/src/main/res/layout/list_view_item.xml" value="0.4" />
+=======
+        <entry key="..\:/Users/akapa/Documents/Computer Systems Assignments Year 3/COMPSYS 302/project-2-team-13/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+>>>>>>> 969337f3bb9a8af56b7816d69824245692fae437
       </map>
     </option>
   </component>
