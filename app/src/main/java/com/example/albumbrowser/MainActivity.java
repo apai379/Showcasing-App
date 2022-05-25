@@ -1,7 +1,6 @@
 package com.example.albumbrowser;
 
 import androidx.appcompat.app.AppCompatActivity;
-<<<<<<< HEAD
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
@@ -12,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     class ViewHolder {
         CardView cardviewVinyl;
+
         public ViewHolder(){
             cardviewVinyl = findViewById(R.id.cardview_vinyl);
         }
@@ -19,28 +19,20 @@ public class MainActivity extends AppCompatActivity {
 
     ViewHolder vh;
 
-=======
-
-import android.os.Bundle;
-
-public class MainActivity extends AppCompatActivity {
-
->>>>>>> 969337f3bb9a8af56b7816d69824245692fae437
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
         vh = new ViewHolder();
 
         vh.cardviewVinyl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent numbersActivity = new Intent (getBaseContext(), ListActivity.class);
-                startActivity (numbersActivity);
+                Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
+                startActivity (listActivity);
             }
         });
-=======
->>>>>>> 969337f3bb9a8af56b7816d69824245692fae437
+
     }
+
 }
