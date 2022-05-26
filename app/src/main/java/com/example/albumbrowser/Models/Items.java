@@ -1,10 +1,9 @@
 package com.example.albumbrowser.Models;
 
 public class Items {
-    String albumType, albumName, albumArtist, albumGenre, albumIcon;
-    int albumPrice;
+    String albumType, albumName, albumArtist, albumGenre, albumIcon, albumPrice;
 
-    public Items(String albumType, String albumName, String albumArtist, String albumGenre, String albumIcon, int albumPrice) {
+    public Items(String albumType, String albumName, String albumArtist, String albumGenre, String albumIcon, String albumPrice) {
         this.albumType = albumType;
         this.albumName = albumName;
         this.albumArtist = albumArtist;
@@ -31,7 +30,7 @@ public class Items {
 
     public String getAlbumIcon() { return albumIcon; }
 
-    public int getAlbumPrice() {
-        return albumPrice;
+    public String getAlbumPrice() {
+        return "$" + albumPrice;
     }
 }

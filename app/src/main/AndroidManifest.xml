@@ -10,12 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlbumBrowser">
         <activity
-<<<<<<< HEAD
             android:name=".ListActivity"
             android:exported="false" />
         <activity
-=======
->>>>>>> 969337f3bb9a8af56b7816d69824245692fae437
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

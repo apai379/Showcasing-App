@@ -16,26 +16,26 @@ public class DataProvider {
     private static String[] albumGenre = {"R&B, New Wave, Dream Pop", "Progressive Rock, Psychedelic", "R&B, New Wave, Dream Pop",
     "Progressive Rock, Psychedelic", "R&B, New Wave, Dream Pop", "Progressive Rock, Psychedelic"};
 
-    private static int[] albumRating = {80, 91, 80, 91, 80, 91};
+    private static String[] albumRating = {"80", "91", "80", "91", "80", "91"};
 
-    private static int[] albumPrice = {45, 65, 45, 65, 45, 65};
+    private static String[] albumPrice = {"45", "65", "45", "65", "45", "65"};
 
-    private static int[] albumReleaseYear = {2020, 1973, 2020, 1973, 2020, 1973};
+    private static String[] albumReleaseYear = {"2020", "1973", "2020", "1973", "2020", "1973"};
 
     private static String[] albumImage1 = {"afterhours_vinyl1", "tdsotm_vinyl1", "afterhours_cd1", "tdsotm_cd1",
     "afterhours_cassette1", "tdsotm_cassette1"};
 
 
-    public static List<Items> getItems(String inputAlbumType) {
+    public static List<Items> getItems() {
         List<Items> itemsList = new LinkedList<Items>();
         for (int i = 0; i < albumType.length; i++) {
-            if (albumType[i] == inputAlbumType) {
+            if (albumType[i] == "Vinyl") {
                 String itemAlbumName = albumName[i];
                 String itemAlbumArtist = albumArtist[i];
                 String itemAlbumGenre = albumGenre[i];
                 String itemAlbumIcon = albumImage1[i];
-                int itemAlbumPrice = albumPrice[i];
-                Items item = new Items(inputAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon,
+                String itemAlbumPrice = albumPrice[i];
+                Items item = new Items("Vinyl", itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon,
                                                                                                         itemAlbumPrice);
                 itemsList.add(item);
             }
