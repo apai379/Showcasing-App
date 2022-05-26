@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:id="@+id/numbers_listview_icon"
+            android:id="@+id/items_listview_albumIcon"
             android:src="@drawable/afterhours_vinyl1"/>
 
         <LinearLayout
@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:text="Music Type"
+                android:id="@+id/items_listview_albumType"
+                android:text="Album Type"
                 android:layout_gravity="left" />
 
             <TextView
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="24sp"
+                android:id="@+id/items_listview_albumName"
                 android:text="Album Name"
                 android:layout_gravity="left" />
 
@@ -45,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
+                android:id="@+id/items_listview_albumArtist"
                 android:text="Artist Name"
                 android:layout_gravity="left" />
 
@@ -52,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/items_listview_albumGenre"
                 android:textSize="14sp"
                 android:text="Genres"
                 android:layout_gravity="left" />
@@ -63,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="14sp"
+            android:id="@+id/items_listview_albumPrice"
             android:text="Price"
             android:gravity="right"
             android:layout_gravity="bottom" />

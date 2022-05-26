@@ -6,32 +6,37 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DataProvider {
-    private String[] albumName = {"After Hours", "The Dark Side Of The Moon", "After Hours", "The Dark Side Of The Moon",
+    private static String[] albumName = {"After Hours", "The Dark Side Of The Moon", "After Hours", "The Dark Side Of The Moon",
     "After Hours", "The Dark Side Of The Moon"};
 
-    private String[] albumType = {"Vinyl", "Vinyl", "CD", "CD", "Cassette", "Cassette"};
+    private static String[] albumType = {"Vinyl", "Vinyl", "CD", "CD", "Cassette", "Cassette"};
 
-    private String[] albumArtist = {"The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd"};
+    private static String[] albumArtist = {"The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd"};
 
-    private String[] albumGenre = {"R&B, New Wave, Dream Pop", "Progressive Rock, Psychedelic", "R&B, New Wave, Dream Pop",
+    private static String[] albumGenre = {"R&B, New Wave, Dream Pop", "Progressive Rock, Psychedelic", "R&B, New Wave, Dream Pop",
     "Progressive Rock, Psychedelic", "R&B, New Wave, Dream Pop", "Progressive Rock, Psychedelic"};
 
-    private int[] albumRating = {80, 91, 80, 91, 80, 91};
+    private static int[] albumRating = {80, 91, 80, 91, 80, 91};
 
-    private int[] albumPrice = {45, 65, 45, 65, 45, 65};
+    private static int[] albumPrice = {45, 65, 45, 65, 45, 65};
 
-    private int[] albumReleaseYear = {2020, 1973, 2020, 1973, 2020, 1973};
+    private static int[] albumReleaseYear = {2020, 1973, 2020, 1973, 2020, 1973};
+
+    private static String[] albumImage1 = {"afterhours_vinyl1", "tdsotm_vinyl1", "afterhours_cd1", "tdsotm_cd1",
+    "afterhours_cassette1", "tdsotm_cassette1"};
 
 
-    public List<Items> getItems(String albumType) {
+    public static List<Items> getItems(String inputAlbumType) {
         List<Items> itemsList = new LinkedList<Items>();
-        for (int i = 0; i < albumType.length(); i++) {
-            if (this.albumType[i] == albumType) {
+        for (int i = 0; i < albumType.length; i++) {
+            if (albumType[i] == inputAlbumType) {
                 String itemAlbumName = albumName[i];
                 String itemAlbumArtist = albumArtist[i];
                 String itemAlbumGenre = albumGenre[i];
+                String itemAlbumIcon = albumImage1[i];
                 int itemAlbumPrice = albumPrice[i];
-                Items item = new Items(albumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumPrice);
+                Items item = new Items(inputAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon,
+                                                                                                        itemAlbumPrice);
                 itemsList.add(item);
             }
         }
