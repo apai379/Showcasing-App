@@ -8,9 +8,23 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Most Viewed"
+        android:gravity="left"
+        android:textColor="@color/black"
+        style="@style/CategoryTextStyle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerview"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:id="@+id/cardview_vinyl"
         android:backgroundTint="#2962FF"
         style="@style/CategoryCardStyle">
@@ -26,8 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cardview_cd"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#33691E"
         style="@style/CategoryCardStyle">
 
@@ -41,6 +54,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:id="@+id/cardview_cassette"
         android:backgroundTint="#6200EA"
         style="@style/CategoryCardStyle">
