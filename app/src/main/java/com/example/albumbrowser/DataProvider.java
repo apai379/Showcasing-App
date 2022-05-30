@@ -26,10 +26,10 @@ public class DataProvider {
     "afterhours_cassette1", "tdsotm_cassette1"};
 
 
-    public static List<Items> getItems() {
+    public static List<Items> getItems(String type) {
         List<Items> itemsList = new LinkedList<Items>();
         for (int i = 0; i < albumType.length; i++) {
-            if (albumType[i] == "Vinyl") {
+            if (albumType[i] == type) {
                 String itemAlbumName = albumName[i];
                 String itemAlbumArtist = albumArtist[i];
                 String itemAlbumGenre = albumGenre[i];
