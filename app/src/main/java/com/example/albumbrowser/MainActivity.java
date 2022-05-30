@@ -10,10 +10,12 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     class ViewHolder {
-        CardView cardviewVinyl;
+        CardView cardviewVinyl, cardviewCD, cardviewCassette;
 
         public ViewHolder(){
             cardviewVinyl = findViewById(R.id.cardview_vinyl);
+            cardviewCD = findViewById(R.id.cardview_cd);
+            cardviewCassette = findViewById(R.id.cardview_cassette);
         }
     }
 
@@ -28,7 +30,32 @@ public class MainActivity extends AppCompatActivity {
         vh.cardviewVinyl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String value = "Vinyl";
                 Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
+
+                listActivity.putExtra("type", value);
+                startActivity (listActivity);
+            }
+        });
+
+        vh.cardviewCD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String value = "CD";
+                Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
+
+                listActivity.putExtra("type", value);
+                startActivity (listActivity);
+            }
+        });
+
+        vh.cardviewCassette.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String value = "Cassette";
+                Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
+
+                listActivity.putExtra("type", value);
                 startActivity (listActivity);
             }
         });
