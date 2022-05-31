@@ -17,7 +17,7 @@
         style="@style/CategoryTextStyle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview"/>
 
@@ -31,7 +31,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:text="Vinyl"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>
@@ -46,7 +46,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:text="CD"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>
@@ -61,7 +61,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:text="Cassette"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>

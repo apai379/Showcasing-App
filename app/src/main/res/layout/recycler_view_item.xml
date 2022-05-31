@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="200dp"
+    android:layout_height="300dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,17 +13,19 @@
         <ImageView
             android:id="@+id/recyclerview_item_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/afterhours_vinyl1" />
 
         <TextView
             android:id="@+id/recyclerview_item_albumname"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
+            android:gravity="center"
             android:text="Album Name"
             android:textColor="@color/black"
-            android:textSize="40sp" />
+            android:textSize="24sp"
+            android:autoSizeTextType="uniform" />
 
         <TextView
             android:id="@+id/recyclerview_item_albumtype"
@@ -31,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Type"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/recyclerview_item_albumprice"
@@ -39,7 +41,7 @@
             android:layout_height="wrap_content"
             android:text="Price"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
 
     </LinearLayout>
