@@ -6,23 +6,48 @@ import java.util.List;
 
 import java.util.LinkedList;
 
-public class DetailsActivity<list> {
+public class DetailsActivity {
 
     private String name, artist, genre = null;
     private int rating, price, releaseDate, views = 0;
     private String[] imageList = {};
 
-    private List<Items> listOfAll = DataProvider.getItems();
-
     int i = 0;
-    while (i < listOfAll.length()){
-        Items instance = listOfAll.get(i);
+    private List<Items> listOfAll = DataProvider.getItems(name);
+
+
+    Items instance = listOfAll.get(i);
+
+    public void setName() {
         this.name = instance.getAlbumName();
-        this.artist = instance.getAlbumArtist();
-        this.genre = instance.getAlbumGenre();
-        //this.imageList = instance.getAlbumIcon();
-        //this.price = instance.getAlbumPrice();
-        //this.rating = instance.
     }
+
+    public void setArtist(){
+        this.artist = instance.getAlbumArtist();
+    }
+
+    public void setGenre(){
+        this.genre = instance.getAlbumGenre();
+    }
+
+    public void setPrice(){
+        this.price = Integer.parseInt(instance.getAlbumPrice());
+    }
+
+    public void setRating(){
+        this.rating = Integer.parseInt(instance.)
+    }
+
+
+    //
+//    while (i < listOfAll.length()){
+//        Items instance = listOfAll.get(i);
+//        this.name = instance.getAlbumName();
+//        this.artist = instance.getAlbumArtist();
+//        this.genre = instance.getAlbumGenre();
+//        //this.imageList = instance.getAlbumIcon();
+//        //this.price = instance.getAlbumPrice();
+//        //this.rating = instance.
+//    }
 
 }
