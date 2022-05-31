@@ -12,42 +12,41 @@ public class DetailsActivity {
     private int rating, price, releaseDate, views = 0;
     private String[] imageList = {};
 
-    int i = 0;
-    private List<Items> listOfAll = DataProvider.getItems(name);
 
+    private List<Items> listOfAll = DataProvider.getDetails();
+    private int length = DataProvider.length();
 
-    Items instance = listOfAll.get(i);
+    public DetailsActivity() {
+        for (int i = 0; i < length; i++){
+            Items instance = listOfAll.get(i);
+            this.name = instance.getAlbumName();
+            this.artist = instance.getAlbumArtist();
+            this.genre = instance.getAlbumGenre();
+            //this.imageList = instance.getAlbumIcon();
+            this.price = Integer.parseInt(instance.getAlbumPrice());
 
-    public void setName() {
-        this.name = instance.getAlbumName();
-    }
+        }
 
-    public void setArtist(){
-        this.artist = instance.getAlbumArtist();
-    }
-
-    public void setGenre(){
-        this.genre = instance.getAlbumGenre();
-    }
-
-    public void setPrice(){
-        this.price = Integer.parseInt(instance.getAlbumPrice());
-    }
-
-    public void setRating(){
-        this.rating = Integer.parseInt(instance.)
     }
 
 
-    //
-//    while (i < listOfAll.length()){
-//        Items instance = listOfAll.get(i);
-//        this.name = instance.getAlbumName();
-//        this.artist = instance.getAlbumArtist();
-//        this.genre = instance.getAlbumGenre();
-//        //this.imageList = instance.getAlbumIcon();
-//        //this.price = instance.getAlbumPrice();
-//        //this.rating = instance.
-//    }
 
 }
+
+//
+//    public void setName() {
+//        this.name = instance.getAlbumName();
+//    }
+//
+//    public void setArtist(){
+//        this.artist = instance.getAlbumArtist();
+//    }
+//
+//    public void setGenre(){
+//        this.genre = instance.getAlbumGenre();
+//    }
+//
+//    public void setPrice(){
+//        this.price = Integer.parseInt(instance.getAlbumPrice());
+//    }
+//
