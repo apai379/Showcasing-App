@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.albumbrowser.Models.Items;
 import com.example.albumbrowser.R;
@@ -20,6 +22,7 @@ public class ItemsAdapter extends ArrayAdapter<Items> {
     int mLayout;
     Context mContext;
     List<Items> mItems;
+
 
     class ViewHolder {
         TextView albumTypeTextView, albumNameTextView, albumArtistTextView, albumGenreTextView, albumPriceTextView;

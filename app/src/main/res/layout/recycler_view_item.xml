@@ -21,9 +21,17 @@
             android:id="@+id/recyclerview_item_albumname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="After Hours"
+            android:text="Album Name"
             android:textColor="@color/black"
             android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/recyclerview_item_albumtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/recyclerview_item_albumprice"
