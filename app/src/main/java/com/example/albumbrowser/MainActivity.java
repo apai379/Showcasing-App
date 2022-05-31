@@ -2,13 +2,18 @@ package com.example.albumbrowser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
+
 public class MainActivity extends AppCompatActivity {
+    LinearLayoutManager linearLayoutManager;
+    RecyclerViewAdapter recyclerViewAdapter;
 
     class ViewHolder {
         CardView cardviewVinyl, cardviewCD, cardviewCassette;
@@ -29,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         vh = new ViewHolder();
+
+        recyclerViewAdapter = new RecyclerViewAdapter(this, DataProvider.getRecyclerViewItems("Vinyl"));
+
+        vh.recyclerView = findViewById(R.id.recyclerview);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        vh.recyclerView.setLayoutManager(linearLayoutManager);
+        vh.recyclerView.setAdapter(recyclerViewAdapter);
 
         vh.cardviewVinyl.setOnClickListener(new View.OnClickListener() {
             @Override
