@@ -55,14 +55,15 @@ public class DataProvider {
         List<Items> itemsList = new LinkedList<Items>();
         String[][] searchArrays = {albumName, albumArtist, albumGenre};
         for (int i = 0; i < searchArrays.length; i++) {
-            for (int j = 0; j < searchArrays[i].length; i++) {
-                if (searchArrays[i][j].equals(type)) {
-                    String itemAlbumType = albumType[i];
-                    String itemAlbumName = albumName[i];
-                    String itemAlbumArtist = albumArtist[i];
-                    String itemAlbumGenre = albumGenre[i];
-                    String itemAlbumIcon = albumImage1[i];
-                    String itemAlbumPrice = albumPrice[i];
+            String[] searchArray = searchArrays[i];
+            for (int j = 0; j < searchArray.length; j++) {
+                if (searchArray[j].equals(type)) {
+                    String itemAlbumType = albumType[j];
+                    String itemAlbumName = albumName[j];
+                    String itemAlbumArtist = albumArtist[j];
+                    String itemAlbumGenre = albumGenre[j];
+                    String itemAlbumIcon = albumImage1[j];
+                    String itemAlbumPrice = albumPrice[j];
                     Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
                     if (!itemsList.contains(item)) {
                         itemsList.add(item);
