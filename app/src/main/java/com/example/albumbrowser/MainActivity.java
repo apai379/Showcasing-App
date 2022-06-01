@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 
@@ -16,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
 
     class ViewHolder {
+        EditText searchBar;
         CardView cardviewVinyl, cardviewCD, cardviewCassette;
         RecyclerView recyclerView;
 
         public ViewHolder(){
+            searchBar = findViewById(R.id.search_bar);
             cardviewVinyl = findViewById(R.id.cardview_vinyl);
             cardviewCD = findViewById(R.id.cardview_cd);
             cardviewCassette = findViewById(R.id.cardview_cassette);
@@ -75,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String getKeyword() {
+        return vh.searchBar.getText().toString();
+    }
+
+    private void searchKeyword() {
+        String keyword = getKeyword();
     }
 
 }

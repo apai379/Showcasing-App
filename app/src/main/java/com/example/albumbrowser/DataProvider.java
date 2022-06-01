@@ -3,6 +3,7 @@ package com.example.albumbrowser;
 import com.example.albumbrowser.Models.Items;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,6 +47,30 @@ public class DataProvider {
                 Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
                 itemsList.add(item);
             }
+        }
+        return itemsList;
+    }
+
+    public static List<Items> getSearchedItems(String type) {
+        List<Items> itemsList = new LinkedList<Items>();
+        String[][] searchArrays = {albumName, albumArtist, albumGenre};
+        for (int i = 0; i < searchArrays.length; i++) {
+            for (int j = 0; j < searchArrays[i].length; i++) {
+                if (searchArrays[i][j].equals(type)) {
+                    String itemAlbumType = albumType[i];
+                    String itemAlbumName = albumName[i];
+                    String itemAlbumArtist = albumArtist[i];
+                    String itemAlbumGenre = albumGenre[i];
+                    String itemAlbumIcon = albumImage1[i];
+                    String itemAlbumPrice = albumPrice[i];
+                    Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
+                    if (!itemsList.contains(item)) {
+                        itemsList.add(item);
+                    }
+                }
+            }
+        }
+
         }
         return itemsList;
     }
