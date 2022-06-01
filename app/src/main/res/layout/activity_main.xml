@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Most Viewed"
+        android:text="Recently Viewed"
         android:gravity="left"
         android:textColor="@color/black"
         style="@style/CategoryTextStyle" />
@@ -24,14 +24,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/cardview_vinyl"
         android:backgroundTint="#2962FF"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="56dp"
             android:text="Vinyl"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>
@@ -40,13 +40,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cardview_cd"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#33691E"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="56dp"
             android:text="CD"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>
@@ -54,14 +54,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/cardview_cassette"
         android:backgroundTint="#6200EA"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="56dp"
             android:text="Cassette"
             style="@style/CategoryTextStyle" />
     </androidx.cardview.widget.CardView>
