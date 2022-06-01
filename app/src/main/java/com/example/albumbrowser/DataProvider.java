@@ -39,7 +39,15 @@ public class DataProvider {
 
     public static List<Items> getItems(String type) {
         List<Items> itemsList = new LinkedList<Items>();
-        for (int i = 0; i < albumType.length; i++) {
+        int start = 0;
+        if (type.equals("Vinyl")) {
+            start = 0;
+        } else if (type.equals("CD")) {
+            start = 2;
+        } else if (type.equals("Cassette")) {
+            start = 4;
+        }
+        for (int i = start; i < albumType.length; i++) {
             if (albumType[i] == type) {
                 String itemAlbumType = albumType[i];
                 String itemAlbumName = albumName[i];
@@ -49,6 +57,8 @@ public class DataProvider {
                 String itemAlbumPrice = albumPrice[i];
                 Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
                 itemsList.add(item);
+            } else {
+                break;
             }
         }
         return itemsList;
@@ -79,66 +89,81 @@ public class DataProvider {
 
 
     public static Details getDetails(String type, String name) {
-        Details details = null;
-        for (int i = 0; i < albumType.length; i++) {
-            if (albumType[i].equals(type)) {
-                for (int j = 0; j < albumName.length; j++) {
-                    if (albumName[j].equals(name)) {
-                        String detailsAlbumType = albumType[j];
-                        String detailsAlbumName = albumName[j];
-                        String detailsAlbumArtist = albumArtist[j];
-                        String detailsAlbumGenre = albumGenre[j];
-                        String detailsAlbumPrice = albumPrice[j];
-                        String detailsAlbumRating = albumRating[j];
-                        String detailsAlbumReleaseYear = albumReleaseYear[j];
-                        details = new Details(detailsAlbumType, detailsAlbumName, detailsAlbumArtist, detailsAlbumGenre,
-                                detailsAlbumPrice, detailsAlbumRating, detailsAlbumReleaseYear);
-                        break;
-                    }
-                }
-            }
-            break;
+        int start = 0;
+        if (type.equals("Vinyl")) {
+            start = 0;
+        } else if (type.equals("CD")) {
+            start = 2;
+        } else if (type.equals("Cassette")) {
+            start = 4;
         }
-        return details;
+
+        for (int i = start; i < albumName.length; i++) {
+            if (albumName[i].equals(name)) {
+                String detailsAlbumType = albumType[i];
+                String detailsAlbumName = albumName[i];
+                String detailsAlbumArtist = albumArtist[i];
+                String detailsAlbumGenre = albumGenre[i];
+                String detailsAlbumPrice = albumPrice[i];
+                String detailsAlbumRating = albumRating[i];
+                String detailsAlbumReleaseYear = albumReleaseYear[i];
+                Details details = new Details(detailsAlbumType, detailsAlbumName, detailsAlbumArtist, detailsAlbumGenre,
+                        detailsAlbumPrice, detailsAlbumRating, detailsAlbumReleaseYear);
+                return details;
+            }
+        }
+        return null;
     }
 
     public static List<RecyclerViewImage> getRecyclerViewImages(String type, String name) {
         List<RecyclerViewImage> imagesList = new LinkedList<RecyclerViewImage>();
-        for (int i = 0; i < albumType.length; i++) {
-            if (albumType[i].equals(type)) {
-                for (int j = 0; j < albumName.length; j++) {
-                    if (albumName[j].equals(name)) {
-                        String rvAlbumImage1 = albumImage1[j];
-                        String rvAlbumImage2 = albumImage2[j];
-                        String rvAlbumImage3 = albumImage3[j];
-                        RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
-                        RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
-                        RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
-                        imagesList.add(recyclerViewImage1);
-                        imagesList.add(recyclerViewImage2);
-                        imagesList.add(recyclerViewImage3);
-                        break;
-                    }
-                }
-                break;
+        int start = 0;
+        if (type.equals("Vinyl")) {
+            start = 0;
+        } else if (type.equals("CD")) {
+            start = 2;
+        } else if (type.equals("Cassette")) {
+            start = 4;
+        }
+
+        for (int i = start; i < albumName.length; i++) {
+            if (albumName[i].equals(name)) {
+                String rvAlbumImage1 = albumImage1[i];
+                String rvAlbumImage2 = albumImage2[i];
+                String rvAlbumImage3 = albumImage3[i];
+                RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
+                RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
+                RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
+                imagesList.add(recyclerViewImage1);
+                imagesList.add(recyclerViewImage2);
+                imagesList.add(recyclerViewImage3);
+                return imagesList;
             }
         }
-        return imagesList;
+        return null;
     }
 
-    public static List<RecyclerViewItem> getRecyclerViewItems(String type) {
-        List<RecyclerViewItem> itemsList = new LinkedList<RecyclerViewItem>();
-        for (int i = 0; i < albumType.length; i++) {
-            if (albumType[i] == type) {
+    public static RecyclerViewItem getRecyclerViewItem(String type, String name) {
+        int start = 0;
+        if (type.equals("Vinyl")) {
+            start = 0;
+        } else if (type.equals("CD")) {
+            start = 2;
+        } else if (type.equals("Cassette")) {
+            start = 4;
+        }
+
+        for (int i = start; i < albumName.length; i++) {
+            if (albumName[i].equals(name)) {
                 String itemAlbumType = albumType[i];
                 String itemAlbumName = albumName[i];
                 String itemAlbumPrice = albumPrice[i];
                 String itemAlbumIcon = albumImage1[i];
                 RecyclerViewItem recyclerViewItem = new RecyclerViewItem(itemAlbumType, itemAlbumName, itemAlbumPrice, itemAlbumIcon);
-                itemsList.add(recyclerViewItem);
+                return recyclerViewItem;
             }
         }
-        return itemsList;
+        return null;
     }
 
     public static int length(){

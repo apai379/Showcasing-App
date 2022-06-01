@@ -13,10 +13,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
+import com.example.albumbrowser.Models.RecyclerViewImage;
+import com.example.albumbrowser.Models.RecyclerViewItem;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
+    List<RecyclerViewItem> recentlyViewedList;
 
     class ViewHolder {
         EditText searchBar;
@@ -42,7 +48,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         vh = new ViewHolder();
 
-        recyclerViewAdapter = new RecyclerViewAdapter(this, DataProvider.getRecyclerViewItems("Vinyl"));
+        recentlyViewedList = new LinkedList<RecyclerViewItem>();
+
+        recentlyViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"));
+        recentlyViewedList.add(DataProvider.getRecyclerViewItem("CD", "After Hours"));
+        recentlyViewedList.add(DataProvider.getRecyclerViewItem("Cassette", "After Hours"));
+
+        recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList);
 
         vh.recyclerView = findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
