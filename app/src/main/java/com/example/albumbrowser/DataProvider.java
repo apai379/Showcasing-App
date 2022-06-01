@@ -57,7 +57,7 @@ public class DataProvider {
         for (int i = 0; i < searchArrays.length; i++) {
             String[] searchArray = searchArrays[i];
             for (int j = 0; j < searchArray.length; j++) {
-                if (searchArray[j].equals(type)) {
+                if (searchArray[j].contains(type)) {
                     String itemAlbumType = albumType[j];
                     String itemAlbumName = albumName[j];
                     String itemAlbumArtist = albumArtist[j];

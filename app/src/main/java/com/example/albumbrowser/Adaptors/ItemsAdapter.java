@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.albumbrowser.Models.Items;
 import com.example.albumbrowser.R;
@@ -26,7 +24,7 @@ public class ItemsAdapter extends ArrayAdapter<Items> {
 
     class ViewHolder {
         TextView albumTypeTextView, albumNameTextView, albumArtistTextView, albumGenreTextView, albumPriceTextView;
-        ImageView albumIconImageView;
+        ImageView albumIconView;
 
         public ViewHolder(View currentView) {
             albumTypeTextView = currentView.findViewById(R.id.items_listview_albumType);
@@ -34,7 +32,7 @@ public class ItemsAdapter extends ArrayAdapter<Items> {
             albumArtistTextView = currentView.findViewById(R.id.items_listview_albumArtist);
             albumGenreTextView = currentView.findViewById(R.id.items_listview_albumGenre);
             albumPriceTextView = currentView.findViewById(R.id.items_listview_albumPrice);
-            albumIconImageView = currentView.findViewById(R.id.items_listview_albumIcon);
+            albumIconView = currentView.findViewById(R.id.items_listview_albumIcon);
         }
     }
 
@@ -67,7 +65,7 @@ public class ItemsAdapter extends ArrayAdapter<Items> {
                 mContext.getPackageName());
 
         //Setting the icon
-        vh.albumIconImageView.setImageResource(i);
+        vh.albumIconView.setImageResource(i);
 
         vh.albumTypeTextView.setText(currentNumber.getAlbumType());
         vh.albumNameTextView.setText(currentNumber.getAlbumName());
