@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String getKeyword() {
+    public String getKeyword() {
         return vh.searchBar.getText().toString();
     }
 
-    private void searchKeyword() {
+    public void searchKeyword(View view) {
         String keyword = getKeyword();
     }
 

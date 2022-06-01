@@ -70,10 +70,9 @@ public class DataProvider {
                 }
             }
         }
-
-        }
         return itemsList;
     }
+
 
     public static List<Items> getDetails() {
         List<Items> itemsList = new LinkedList<Items>();
