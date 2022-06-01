@@ -1,8 +1,10 @@
 package com.example.albumbrowser;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.albumbrowser.Adaptors.ItemsAdapter;
+import com.example.albumbrowser.Models.Items;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -40,12 +43,13 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView name = findViewById(R.id.items_listview_albumName);
-                TextView type = findViewById(R.id.items_listview_albumType);
+                Items item = (Items) parent.getItemAtPosition(position);
+                String type = item.getAlbumType();
+                String name = item.getAlbumName();
 
                 Intent detailsActivity = new Intent (getBaseContext(), DetailsActivity.class);
-                detailsActivity.putExtra("type", type.getText().toString());
-                detailsActivity.putExtra("name", name.getText().toString());
+                detailsActivity.putExtra("type", type);
+                detailsActivity.putExtra("name", name);
                 startActivity(detailsActivity);
             }
         });

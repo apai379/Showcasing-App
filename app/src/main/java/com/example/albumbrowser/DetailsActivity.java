@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.albumbrowser.Adaptors.DetailsAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewImageAdaptor;
 import com.example.albumbrowser.Models.Details;
@@ -26,7 +25,6 @@ import java.util.List;
 public class DetailsActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     RecyclerViewImageAdaptor recyclerViewImageAdapter;
-    DetailsAdapter detailsAdapter;
     List<RecyclerViewImage> recyclerViewImages;
 
     class ViewHolder {
@@ -60,6 +58,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         Details details = DataProvider.getDetails(type, name);
 
+        String rf = details.getAlbumType();
+        String de = details.getAlbumName();
+
         vh.albumType.setText(details.getAlbumType());
         vh.albumName.setText(details.getAlbumName());
         vh.albumArtist.setText(details.getAlbumArtist());
@@ -68,7 +69,7 @@ public class DetailsActivity extends AppCompatActivity {
         vh.albumRating.setText(details.getAlbumRating());
         vh.albumReleaseYear.setText(details.getAlbumReleaseYear());
 
-        recyclerViewImageAdapter = new RecyclerViewImageAdaptor(this, DataProvider.getRecyclerViewImages("Vinyl", "After Hours"));
+        recyclerViewImageAdapter = new RecyclerViewImageAdaptor(this, DataProvider.getRecyclerViewImages(type, name));
         vh.recyclerView = findViewById(R.id.recyclerview_details);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         vh.recyclerView.setLayoutManager(linearLayoutManager);

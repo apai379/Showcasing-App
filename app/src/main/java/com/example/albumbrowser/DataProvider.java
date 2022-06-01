@@ -84,13 +84,13 @@ public class DataProvider {
             if (albumType[i].equals(type)) {
                 for (int j = 0; j < albumName.length; j++) {
                     if (albumName[j].equals(name)) {
-                        String detailsAlbumType = albumType[i];
-                        String detailsAlbumName = albumName[i];
-                        String detailsAlbumArtist = albumArtist[i];
-                        String detailsAlbumGenre = albumGenre[i];
-                        String detailsAlbumPrice = albumPrice[i];
-                        String detailsAlbumRating = albumRating[i];
-                        String detailsAlbumReleaseYear = albumReleaseYear[i];
+                        String detailsAlbumType = albumType[j];
+                        String detailsAlbumName = albumName[j];
+                        String detailsAlbumArtist = albumArtist[j];
+                        String detailsAlbumGenre = albumGenre[j];
+                        String detailsAlbumPrice = albumPrice[j];
+                        String detailsAlbumRating = albumRating[j];
+                        String detailsAlbumReleaseYear = albumReleaseYear[j];
                         details = new Details(detailsAlbumType, detailsAlbumName, detailsAlbumArtist, detailsAlbumGenre,
                                 detailsAlbumPrice, detailsAlbumRating, detailsAlbumReleaseYear);
                         break;
@@ -108,9 +108,9 @@ public class DataProvider {
             if (albumType[i].equals(type)) {
                 for (int j = 0; j < albumName.length; j++) {
                     if (albumName[j].equals(name)) {
-                        String rvAlbumImage1 = albumImage1[i];
-                        String rvAlbumImage2 = albumImage2[i];
-                        String rvAlbumImage3 = albumImage3[i];
+                        String rvAlbumImage1 = albumImage1[j];
+                        String rvAlbumImage2 = albumImage2[j];
+                        String rvAlbumImage3 = albumImage3[j];
                         RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
                         RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
                         RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
