@@ -5,13 +5,19 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.albumbrowser.Adaptors.DetailsAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewImageAdaptor;
+import com.example.albumbrowser.Models.Details;
 import com.example.albumbrowser.Models.RecyclerViewImage;
 
 import java.util.LinkedList;
@@ -20,14 +26,22 @@ import java.util.List;
 public class DetailsActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     RecyclerViewImageAdaptor recyclerViewImageAdapter;
-    List<RecyclerViewImage> testimages;
-    RecyclerViewImage t1, t2, t3;
+    DetailsAdapter detailsAdapter;
+    List<RecyclerViewImage> recyclerViewImages;
 
     class ViewHolder {
         RecyclerView recyclerView;
+        TextView albumType, albumName, albumArtist, albumGenre, albumPrice, albumRating, albumReleaseYear;
 
         public ViewHolder(){
-            recyclerView = findViewById(R.id.recyclerview_details);
+            //recyclerView = findViewById(R.id.recyclerview_details);
+            albumType = findViewById(R.id.details_type);
+            albumName = findViewById(R.id.details_name);
+            albumArtist = findViewById(R.id.details_artist);
+            albumGenre = findViewById(R.id.details_genre);
+            albumPrice = findViewById(R.id.details_price);
+            albumRating = findViewById(R.id.details_rating);
+            albumReleaseYear = findViewById(R.id.details_year);
         }
     }
 
@@ -40,20 +54,25 @@ public class DetailsActivity extends AppCompatActivity {
 
         vh = new ViewHolder();
 
-        t1 = new RecyclerViewImage("afterhours_vinyl1");
-        t2 = new RecyclerViewImage("afterhours_vinyl2");
-        t3 = new RecyclerViewImage("afterhours_vinyl3");
+        Intent intent = getIntent();
+        String type = intent.getStringExtra("type");
+        String name = intent.getStringExtra("name");
 
-        testimages = new LinkedList<RecyclerViewImage>();
-        testimages.add(t1);
-        testimages.add(t2);
-        testimages.add(t3);
+        Details details = DataProvider.getDetails(type, name);
 
-        recyclerViewImageAdapter = new RecyclerViewImageAdaptor(this, testimages);
+        vh.albumType.setText(details.getAlbumType());
+        vh.albumName.setText(details.getAlbumName());
+        vh.albumArtist.setText(details.getAlbumArtist());
+        vh.albumGenre.setText(details.getAlbumGenre());
+        vh.albumPrice.setText(details.getAlbumPrice());
+        vh.albumRating.setText(details.getAlbumRating());
+        vh.albumReleaseYear.setText(details.getAlbumReleaseYear());
 
+        recyclerViewImageAdapter = new RecyclerViewImageAdaptor(this, DataProvider.getRecyclerViewImages("Vinyl", "After Hours"));
         vh.recyclerView = findViewById(R.id.recyclerview_details);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         vh.recyclerView.setLayoutManager(linearLayoutManager);
         vh.recyclerView.setAdapter(recyclerViewImageAdapter);
+
     }
 }

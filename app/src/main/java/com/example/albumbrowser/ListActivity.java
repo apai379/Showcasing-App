@@ -8,8 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.albumbrowser.Adaptors.ItemsAdapter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -36,7 +40,12 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView name = findViewById(R.id.items_listview_albumName);
+                TextView type = findViewById(R.id.items_listview_albumType);
+
                 Intent detailsActivity = new Intent (getBaseContext(), DetailsActivity.class);
+                detailsActivity.putExtra("type", type.getText().toString());
+                detailsActivity.putExtra("name", name.getText().toString());
                 startActivity(detailsActivity);
             }
         });

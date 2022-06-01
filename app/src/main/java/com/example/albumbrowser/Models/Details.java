@@ -5,7 +5,7 @@ public class Details {
     String albumImage1, albumImage2, albumImage3;
 
     public Details(String albumType, String albumName, String albumArtist, String albumGenre, String albumPrice,
-                   String albumRating, String albumReleaseYear, String albumImage1, String albumImage2, String albumImage3) {
+                   String albumRating, String albumReleaseYear) {
         this.albumType = albumType;
         this.albumName = albumName;
         this.albumArtist = albumArtist;
@@ -13,9 +13,6 @@ public class Details {
         this.albumPrice = albumPrice;
         this.albumRating = albumRating;
         this.albumReleaseYear = albumReleaseYear;
-        this.albumImage1 = albumImage1;
-        this.albumImage2 = albumImage2;
-        this.albumImage3 = albumImage3;
     }
 
     public String getAlbumType() {
@@ -46,15 +43,4 @@ public class Details {
         return albumReleaseYear;
     }
 
-    public String getAlbumImage1() {
-        return albumImage1;
-    }
-
-    public String getAlbumImage2() {
-        return albumImage2;
-    }
-
-    public String getAlbumImage3() {
-        return albumImage3;
-    }
 }

@@ -57,21 +57,21 @@ public class ItemsAdapter extends ArrayAdapter<Items> {
         ViewHolder vh = new ViewHolder(currentListViewItem);
 
         //Get the Number object for the current position
-        Items currentNumber = mItems.get(position);
+        Items currentItem = mItems.get(position);
 
         //Set the attributed of list_view_number_item views
         int i = mContext.getResources().getIdentifier(
-                currentNumber.getAlbumIcon(), "drawable",
+                currentItem.getAlbumIcon(), "drawable",
                 mContext.getPackageName());
 
         //Setting the icon
         vh.albumIconView.setImageResource(i);
 
-        vh.albumTypeTextView.setText(currentNumber.getAlbumType());
-        vh.albumNameTextView.setText(currentNumber.getAlbumName());
-        vh.albumArtistTextView.setText(currentNumber.getAlbumArtist());
-        vh.albumGenreTextView.setText(currentNumber.getAlbumGenre());
-        vh.albumPriceTextView.setText(currentNumber.getAlbumPrice());
+        vh.albumTypeTextView.setText(currentItem.getAlbumType());
+        vh.albumNameTextView.setText(currentItem.getAlbumName());
+        vh.albumArtistTextView.setText(currentItem.getAlbumArtist());
+        vh.albumGenreTextView.setText(currentItem.getAlbumGenre());
+        vh.albumPriceTextView.setText(currentItem.getAlbumPrice());
 
         return currentListViewItem;
 

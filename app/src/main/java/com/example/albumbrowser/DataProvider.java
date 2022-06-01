@@ -1,6 +1,9 @@
 package com.example.albumbrowser;
 
+import com.example.albumbrowser.Models.Details;
+import com.example.albumbrowser.Models.DetailsImages;
 import com.example.albumbrowser.Models.Items;
+import com.example.albumbrowser.Models.RecyclerViewImage;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
 import java.util.Arrays;
@@ -75,19 +78,52 @@ public class DataProvider {
     }
 
 
-    public static List<Items> getDetails() {
-        List<Items> itemsList = new LinkedList<Items>();
+    public static Details getDetails(String type, String name) {
+        Details details = null;
         for (int i = 0; i < albumType.length; i++) {
-                String itemAlbumType = albumType[i];
-                String itemAlbumName = albumName[i];
-                String itemAlbumArtist = albumArtist[i];
-                String itemAlbumGenre = albumGenre[i];
-                String itemAlbumIcon = albumImage1[i];
-                String itemAlbumPrice = albumPrice[i];
-                Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
-                itemsList.add(item);
+            if (albumType[i].equals(type)) {
+                for (int j = 0; j < albumName.length; j++) {
+                    if (albumName[j].equals(name)) {
+                        String detailsAlbumType = albumType[i];
+                        String detailsAlbumName = albumName[i];
+                        String detailsAlbumArtist = albumArtist[i];
+                        String detailsAlbumGenre = albumGenre[i];
+                        String detailsAlbumPrice = albumPrice[i];
+                        String detailsAlbumRating = albumRating[i];
+                        String detailsAlbumReleaseYear = albumReleaseYear[i];
+                        details = new Details(detailsAlbumType, detailsAlbumName, detailsAlbumArtist, detailsAlbumGenre,
+                                detailsAlbumPrice, detailsAlbumRating, detailsAlbumReleaseYear);
+                        break;
+                    }
+                }
             }
-        return itemsList;
+            break;
+        }
+        return details;
+    }
+
+    public static List<RecyclerViewImage> getRecyclerViewImages(String type, String name) {
+        List<RecyclerViewImage> imagesList = new LinkedList<RecyclerViewImage>();
+        for (int i = 0; i < albumType.length; i++) {
+            if (albumType[i].equals(type)) {
+                for (int j = 0; j < albumName.length; j++) {
+                    if (albumName[j].equals(name)) {
+                        String rvAlbumImage1 = albumImage1[i];
+                        String rvAlbumImage2 = albumImage2[i];
+                        String rvAlbumImage3 = albumImage3[i];
+                        RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
+                        RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
+                        RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
+                        imagesList.add(recyclerViewImage1);
+                        imagesList.add(recyclerViewImage2);
+                        imagesList.add(recyclerViewImage3);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        return imagesList;
     }
 
     public static List<RecyclerViewItem> getRecyclerViewItems(String type) {
