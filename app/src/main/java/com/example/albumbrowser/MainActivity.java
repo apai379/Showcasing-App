@@ -85,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
         vh.searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String keyword = getKeyword();
-                Intent searchActivity = new Intent (getBaseContext(), SearchActivity.class);
+                String keyword = getKeyword();
+                Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
 
-                //searchActivity.putExtra("keyword", keyword);
-                startActivity (searchActivity);
+                listActivity.putExtra("type", keyword);
+                startActivity (listActivity);
             }
         });
 
