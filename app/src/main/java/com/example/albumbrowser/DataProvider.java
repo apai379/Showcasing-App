@@ -50,6 +50,21 @@ public class DataProvider {
         return itemsList;
     }
 
+    public static List<Items> getDetails() {
+        List<Items> itemsList = new LinkedList<Items>();
+        for (int i = 0; i < albumType.length; i++) {
+                String itemAlbumType = albumType[i];
+                String itemAlbumName = albumName[i];
+                String itemAlbumArtist = albumArtist[i];
+                String itemAlbumGenre = albumGenre[i];
+                String itemAlbumIcon = albumImage1[i];
+                String itemAlbumPrice = albumPrice[i];
+                Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
+                itemsList.add(item);
+            }
+        return itemsList;
+    }
+
     public static List<RecyclerViewItem> getRecyclerViewItems(String type) {
         List<RecyclerViewItem> itemsList = new LinkedList<RecyclerViewItem>();
         for (int i = 0; i < albumType.length; i++) {
@@ -63,6 +78,10 @@ public class DataProvider {
             }
         }
         return itemsList;
+    }
+
+    public static int length(){
+        return albumType.length;
     }
 
 }
