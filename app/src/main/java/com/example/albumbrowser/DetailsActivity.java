@@ -18,6 +18,7 @@ import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewImageAdaptor;
 import com.example.albumbrowser.Models.Details;
 import com.example.albumbrowser.Models.RecyclerViewImage;
+import com.example.albumbrowser.Models.RecyclerViewItem;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -58,9 +59,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         Details details = DataProvider.getDetails(type, name);
 
-        String rf = details.getAlbumType();
-        String de = details.getAlbumName();
-
         vh.albumType.setText(details.getAlbumType());
         vh.albumName.setText(details.getAlbumName());
         vh.albumArtist.setText(details.getAlbumArtist());
@@ -74,6 +72,9 @@ public class DetailsActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         vh.recyclerView.setLayoutManager(linearLayoutManager);
         vh.recyclerView.setAdapter(recyclerViewImageAdapter);
+
+//        RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
+//        MainActivity.changeRecentlyViewed(recyclerViewItem);
 
     }
 }

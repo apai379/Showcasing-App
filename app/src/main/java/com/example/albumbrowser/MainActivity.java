@@ -20,9 +20,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayoutManager linearLayoutManager;
-    RecyclerViewAdapter recyclerViewAdapter;
-    List<RecyclerViewItem> recentlyViewedList;
+    private static LinearLayoutManager linearLayoutManager;
+    private static RecyclerViewAdapter recyclerViewAdapter;
+    private static List<RecyclerViewItem> recentlyViewedList;
 
     class ViewHolder {
         EditText searchBar;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    ViewHolder vh;
+    static ViewHolder vh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String getKeyword() {
+    public static String getKeyword() {
         return vh.searchBar.getText().toString();
     }
+
+//    public static void changeRecentlyViewed(RecyclerViewItem recyclerViewItem) {
+//        recentlyViewedList.remove(recentlyViewedList.get(1));
+//    }
 
 }
