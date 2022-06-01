@@ -26,14 +26,13 @@ import java.util.List;
 public class DetailsActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     RecyclerViewImageAdaptor recyclerViewImageAdapter;
-    List<RecyclerViewImage> recyclerViewImages;
 
     class ViewHolder {
         RecyclerView recyclerView;
         TextView albumType, albumName, albumArtist, albumGenre, albumPrice, albumRating, albumReleaseYear;
 
         public ViewHolder(){
-            //recyclerView = findViewById(R.id.recyclerview_details);
+            recyclerView = findViewById(R.id.recyclerview_details);
             albumType = findViewById(R.id.details_type);
             albumName = findViewById(R.id.details_name);
             albumArtist = findViewById(R.id.details_artist);
@@ -73,8 +72,8 @@ public class DetailsActivity extends AppCompatActivity {
         vh.recyclerView.setLayoutManager(linearLayoutManager);
         vh.recyclerView.setAdapter(recyclerViewImageAdapter);
 
-//        RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
-//        MainActivity.changeRecentlyViewed(recyclerViewItem);
+        RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
+        MainActivity.addRecentlyViewed(recyclerViewItem);
 
     }
 }

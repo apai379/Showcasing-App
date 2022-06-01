@@ -16,6 +16,7 @@ import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 import com.example.albumbrowser.Models.RecyclerViewImage;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static LinearLayoutManager linearLayoutManager;
     private static RecyclerViewAdapter recyclerViewAdapter;
     private static List<RecyclerViewItem> recentlyViewedList;
+    private static List<RecyclerViewItem> addItemsToRVL;
 
     class ViewHolder {
         EditText searchBar;
@@ -49,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
         vh = new ViewHolder();
 
         recentlyViewedList = new LinkedList<RecyclerViewItem>();
+        addItemsToRVL = new LinkedList<RecyclerViewItem>();
 
-        recentlyViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"));
-        recentlyViewedList.add(DataProvider.getRecyclerViewItem("CD", "After Hours"));
-        recentlyViewedList.add(DataProvider.getRecyclerViewItem("Cassette", "After Hours"));
+        changeRecentlyViewed();
 
         recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList);
 
@@ -111,8 +112,39 @@ public class MainActivity extends AppCompatActivity {
         return vh.searchBar.getText().toString();
     }
 
-//    public static void changeRecentlyViewed(RecyclerViewItem recyclerViewItem) {
-//        recentlyViewedList.remove(recentlyViewedList.get(1));
-//    }
+    public static void addRecentlyViewed(RecyclerViewItem recyclerViewItem) {
+        Iterator<RecyclerViewItem> iterator = addItemsToRVL.iterator();
+        String type = recyclerViewItem.getAlbumType();
+        String name = recyclerViewItem.getAlbumName();
+
+        while (iterator.hasNext()){
+            RecyclerViewItem item = iterator.next();
+            if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)){
+                addItemsToRVL.remove(item);
+                break;
+            }
+            addItemsToRVL.add(item);
+        }
+    }
+
+    public static void changeRecentlyViewed() {
+        Iterator<RecyclerViewItem> iterator1 = addItemsToRVL.iterator();
+        Iterator<RecyclerViewItem> iterator2 = recentlyViewedList.iterator();
+
+        while (iterator1.hasNext()){
+            RecyclerViewItem itemToAdd = iterator1.next();
+            String type = itemToAdd.getAlbumType();
+            String name = itemToAdd.getAlbumName();
+            while (iterator2.hasNext()) {
+                RecyclerViewItem checkItem = iterator1.next();
+                if (checkItem.getAlbumType().equals(type) && checkItem.getAlbumName().equals(name)){
+                    recentlyViewedList.remove(checkItem);
+                    break;
+                }
+            }
+            recentlyViewedList.add(itemToAdd);
+        }
+        addItemsToRVL.clear();
+    }
 
 }
