@@ -20,16 +20,15 @@
             android:inputType="text"
             android:id="@+id/search_bar"/>
 
-        <ImageButton
+        <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="48dp"
-            android:scaleType="fitXY"
-            android:onClick="searchKeyword"
-            android:src="@drawable/searchbar_icon" />
+            android:scaleType="centerInside"
+            android:src="@drawable/searchbar_icon"
+            android:id="@+id/search_button"/>
 
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"

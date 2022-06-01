@@ -15,10 +15,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ItemsAdapter itemsAdapter = null;
-        Intent intent = getIntent();
-
-        itemsAdapter = new ItemsAdapter(this, R.layout.list_view_item, DataProvider.getItems(intent.getStringExtra("type")));
+        ItemsAdapter itemsAdapter = new ItemsAdapter(this, R.layout.list_view_item, DataProvider.getItems("Vinyl"));
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
 

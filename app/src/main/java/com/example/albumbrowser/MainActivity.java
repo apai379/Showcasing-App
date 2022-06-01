@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 
@@ -20,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
         EditText searchBar;
         CardView cardviewVinyl, cardviewCD, cardviewCassette;
         RecyclerView recyclerView;
+        ImageView searchButton;
 
         public ViewHolder(){
             searchBar = findViewById(R.id.search_bar);
+            searchButton = findViewById(R.id.search_button);
             cardviewVinyl = findViewById(R.id.cardview_vinyl);
             cardviewCD = findViewById(R.id.cardview_cd);
             cardviewCassette = findViewById(R.id.cardview_cassette);
@@ -78,14 +82,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        vh.searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String keyword = getKeyword();
+                Intent searchActivity = new Intent (getBaseContext(), SearchActivity.class);
+
+                //searchActivity.putExtra("keyword", keyword);
+                startActivity (searchActivity);
+            }
+        });
+
     }
 
     public String getKeyword() {
         return vh.searchBar.getText().toString();
-    }
-
-    public void searchKeyword(View view) {
-        String keyword = getKeyword();
     }
 
 }
