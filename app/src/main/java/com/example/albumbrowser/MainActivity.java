@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private static RecyclerViewAdapter recyclerViewAdapter;
     private static List<RecyclerViewItem> recentlyViewedList;
     private static List<RecyclerViewItem> addItemsToRVL;
+    private static Context context;
 
     class ViewHolder {
         EditText searchBar;
@@ -50,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         vh = new ViewHolder();
 
+        context = getBaseContext();
+
         recentlyViewedList = new LinkedList<RecyclerViewItem>();
         addItemsToRVL = new LinkedList<RecyclerViewItem>();
 
-        changeRecentlyViewed();
-
         recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList);
-
         vh.recyclerView = findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         vh.recyclerView.setLayoutManager(linearLayoutManager);
@@ -117,13 +118,17 @@ public class MainActivity extends AppCompatActivity {
         String type = recyclerViewItem.getAlbumType();
         String name = recyclerViewItem.getAlbumName();
 
-        while (iterator.hasNext()){
-            RecyclerViewItem item = iterator.next();
-            if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)){
-                addItemsToRVL.remove(item);
-                break;
+        if (addItemsToRVL.isEmpty()) {
+            addItemsToRVL.add(recyclerViewItem);
+        } else {
+            while (iterator.hasNext()){
+                RecyclerViewItem item = iterator.next();
+                if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)){
+                    addItemsToRVL.remove(item);
+                    break;
+                }
             }
-            addItemsToRVL.add(item);
+            addItemsToRVL.add(recyclerViewItem);
         }
     }
 
@@ -131,20 +136,27 @@ public class MainActivity extends AppCompatActivity {
         Iterator<RecyclerViewItem> iterator1 = addItemsToRVL.iterator();
         Iterator<RecyclerViewItem> iterator2 = recentlyViewedList.iterator();
 
-        while (iterator1.hasNext()){
-            RecyclerViewItem itemToAdd = iterator1.next();
-            String type = itemToAdd.getAlbumType();
-            String name = itemToAdd.getAlbumName();
-            while (iterator2.hasNext()) {
-                RecyclerViewItem checkItem = iterator1.next();
-                if (checkItem.getAlbumType().equals(type) && checkItem.getAlbumName().equals(name)){
-                    recentlyViewedList.remove(checkItem);
-                    break;
+        if (!addItemsToRVL.isEmpty()) {
+            while (iterator1.hasNext()){
+                RecyclerViewItem itemToAdd = iterator1.next();
+                String type = itemToAdd.getAlbumType();
+                String name = itemToAdd.getAlbumName();
+                while (iterator2.hasNext()) {
+                    RecyclerViewItem checkItem = iterator2.next();
+                    if (checkItem.getAlbumType().equals(type) && checkItem.getAlbumName().equals(name)){
+                        recentlyViewedList.remove(checkItem);
+                        break;
+                    }
                 }
+                recentlyViewedList.add(itemToAdd);
             }
-            recentlyViewedList.add(itemToAdd);
+            addItemsToRVL.clear();
+            recyclerViewAdapter = new RecyclerViewAdapter(context, recentlyViewedList);
+            linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+            vh.recyclerView.setLayoutManager(linearLayoutManager);
+            vh.recyclerView.setAdapter(recyclerViewAdapter);
         }
-        addItemsToRVL.clear();
+
     }
 
 }

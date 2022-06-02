@@ -74,6 +74,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
         MainActivity.addRecentlyViewed(recyclerViewItem);
+        MainActivity.changeRecentlyViewed();
 
     }
 }
