@@ -2,7 +2,6 @@ package com.example.albumbrowser.Models;
 
 public class Details {
     String albumType, albumName, albumArtist, albumGenre, albumPrice, albumRating, albumReleaseYear;
-    String albumImage1, albumImage2, albumImage3;
 
     public Details(String albumType, String albumName, String albumArtist, String albumGenre, String albumPrice,
                    String albumRating, String albumReleaseYear) {
@@ -16,31 +15,31 @@ public class Details {
     }
 
     public String getAlbumType() {
-        return albumType;
+        return "Type: " + albumType;
     }
 
     public String getAlbumName() {
-        return albumName;
+        return "Name: " + albumName;
     }
 
     public String getAlbumArtist() {
-        return albumArtist;
+        return "Artist: " + albumArtist;
     }
 
     public String getAlbumGenre() {
-        return albumGenre;
+        return "Genre: " + albumGenre;
     }
 
     public String getAlbumPrice() {
-        return "$" + albumPrice;
+        return "Price: $" + albumPrice;
     }
 
     public String getAlbumRating() {
-        return albumRating;
+        return "Rating: " + albumRating;
     }
 
     public String getAlbumReleaseYear() {
-        return albumReleaseYear;
+        return "Release Year: " + albumReleaseYear;
     }
 
 }
