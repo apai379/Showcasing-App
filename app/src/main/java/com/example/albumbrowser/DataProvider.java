@@ -36,6 +36,24 @@ public class DataProvider {
     private static String[] abbeyroadvinyl = {"Vinyl", "Abbey Road", "The Beatles",
             "Rock", "70", "100", "1969", "abbeyroad_vinyl1", "abbeyroad_vinyl2", "abbeyroad_vinyl3"};
 
+    private static String[] abbeyroadcd = {"CD", "Abbey Road", "The Beatles",
+            "Rock", "70", "100", "1969", "abbeyroad_cd1", "abbeyroad_cd2", "abbeyroad_cd3"};
+
+    private static String[] thrillervinyl = {"Vinyl", "Thriller", "Michael Jackson",
+            "Pop, Disco, R&B, Funk", "9", "100", "1982", "thriller_vinyl1", "thriller_vinyl2", "thriller_vinyl3"};
+
+    private static String[] thrillercd = {"CD", "Thriller", "Michael Jackson",
+            "Pop, Disco, R&B, Funk", "9", "100", "1982", "thriller_cd1", "thriller_cd2", "thriller_cd3"};
+
+    private static String[] thrillercassette = {"Cassette", "Thriller", "Michael Jackson",
+            "Pop, Disco, R&B, Funk", "9", "100", "1982", "thriller_cassette1", "thriller_cassette2", "thriller_cassette3"};
+
+    private static String[] nevermindcassette = {"Cassette", "Nevermind", "Nirvana", "Grunge, Alternative Rock", "74", "85", "1991",
+            "nevermind_cassette1", "nevermind_cassette2", "nevermind_cassette3"};
+
+    private static String[] aftpcd = {"CD", "Automatic for the People", "R.E.M.", "Alternative Rock", "10", "96", "1992",
+            "aftp_cd1", "aftp_cd2", "aftp_cd3"};
+
 
     public static Map<Integer, String[]> generateData() {
         Map<Integer, String[]> albums = new LinkedHashMap<Integer, String[]>();
@@ -46,60 +64,29 @@ public class DataProvider {
         albums.put(5, tdsotmcd);
         albums.put(6, afterhourscassette);
         albums.put(7, tdsotmcassette);
+        albums.put(8, thrillercassette);
+        albums.put(9, thrillervinyl);
+        albums.put(10, thrillercd);
+        albums.put(11, abbeyroadcd);
+        albums.put(12, nevermindcassette);
+        albums.put(13, aftpcd);
         return albums;
     }
-
-    private static String[] albumName = {"After Hours", "The Dark Side Of The Moon", "After Hours", "The Dark Side Of The Moon",
-    "After Hours", "The Dark Side Of The Moon"};
-
-    private static String[] albumType = {"Vinyl", "Vinyl", "CD", "CD", "Cassette", "Cassette"};
-
-    private static String[] albumArtist = {"The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd", "The Weeknd", "Pink Floyd"};
-
-    private static String[] albumGenre = {"R&B, Synthwave, Pop", "Rock, Psychedelic", "R&B, Synthwave, Pop",
-    "Rock, Psychedelic", "R&B, Synthwave, Pop", "Rock, Psychedelic"};
-
-    private static String[] albumRating = {"80", "91", "80", "91", "80", "91"};
-
-    private static String[] albumPrice = {"45", "65", "45", "65", "45", "65"};
-
-    private static String[] albumReleaseYear = {"2020", "1973", "2020", "1973", "2020", "1973"};
-
-    private static String[] albumImage1 = {"afterhours_vinyl1", "tdsotm_vinyl1", "afterhours_cd1", "tdsotm_cd1",
-    "afterhours_cassette1", "tdsotm_cassette1"};
-
-    private static String[] albumImage2 = {"afterhours_vinyl2", "tdsotm_vinyl2", "afterhours_cd2", "tdsotm_cd2",
-            "afterhours_cassette2", "tdsotm_cassette2"};
-
-    private static String[] albumImage3 = {"afterhours_vinyl3", "tdsotm_vinyl3", "afterhours_cd3", "tdsotm_cd3",
-            "afterhours_cassette3", "tdsotm_cassette3"};
-
 
     public static List<Items> getItems(String type) {
         List<Items> itemsList = new LinkedList<Items>();
         Map<Integer, String[]> albums = generateData();
-        int start = 0;
-        int end = 0;
-        if (type.equals("Vinyl")) {
-            start = 1;
-            end = 3;
-        } else if (type.equals("CD")) {
-            start = 4;
-            end = 5;
-        } else if (type.equals("Cassette")) {
-            start = 6;
-            end = 7;
-        }
-        for (int i = start; i <= end; i++) {
-            String[] data = albums.get(i);
-            String itemAlbumType = data[0];
-            String itemAlbumName = data[1];
-            String itemAlbumArtist = data[2];
-            String itemAlbumGenre = data[3];
-            String itemAlbumPrice = data[4];
-            String itemAlbumIcon = data[7];
-            Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
-            itemsList.add(item);
+        for (String[] data : albums.values()) {
+            if (data[0].equals(type)) {
+                String itemAlbumType = data[0];
+                String itemAlbumName = data[1];
+                String itemAlbumArtist = data[2];
+                String itemAlbumGenre = data[3];
+                String itemAlbumPrice = data[4];
+                String itemAlbumIcon = data[7];
+                Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
+                itemsList.add(item);
+            }
         }
         return itemsList;
     }
