@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         recentlyViewedList = new LinkedList<RecyclerViewItem>();
         addItemsToRVL = new LinkedList<RecyclerViewItem>();
-
         recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList);
         vh.recyclerView = findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                recentlyViewedList.add(itemToAdd);
+                recentlyViewedList.add(0, itemToAdd);
             }
             addItemsToRVL.clear();
             recyclerViewAdapter = new RecyclerViewAdapter(context, recentlyViewedList);
