@@ -7,10 +7,47 @@ import com.example.albumbrowser.Models.RecyclerViewImage;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class DataProvider {
+
+    private static String[] afterhoursvinyl = {"Vinyl", "After Hours", "The Weeknd", "R&B, Synthwave, Pop"
+            , "45", "80", "2020", "afterhours_vinyl1", "afterhours_vinyl2", "afterhours_vinyl3"};
+
+    private static String[] afterhourscd = {"CD", "After Hours", "The Weeknd", "R&B, Synthwave, Pop"
+            , "45", "80", "2020", "afterhours_cd1", "afterhours_cd2", "afterhours_cd3"};
+
+    private static String[] afterhourscassette = {"Cassette", "After Hours", "The Weeknd", "R&B, Synthwave, Pop"
+            , "45", "80", "2020", "afterhours_cassette1", "afterhours_cassette2", "afterhours_cassette3"};
+
+    private static String[] tdsotmvinyl = {"Vinyl", "The Dark Side Of The Moon", "Pink Floyd",
+            "Rock, Psychedelic", "65", "91", "1973", "tdsotm_vinyl1", "tdsotm_vinyl2", "tdsotm_vinyl3"};
+
+    private static String[] tdsotmcd = {"CD", "The Dark Side Of The Moon", "Pink Floyd",
+            "Rock, Psychedelic", "65", "91", "1973", "tdsotm_cd1", "tdsotm_cd2", "tdsotm_cd3"};
+
+    private static String[] tdsotmcassette = {"Cassette", "The Dark Side Of The Moon", "Pink Floyd",
+            "Rock, Psychedelic", "65", "91", "1973", "tdsotm_cassette1", "tdsotm_cassette2", "tdsotm_cassette3"};
+
+
+    public static Map<Integer, String[]> generateData() {
+        Map<Integer, String[]> albums = new LinkedHashMap<Integer, String[]>();
+        albums.put(1, afterhoursvinyl);
+        albums.put(2, tdsotmvinyl);
+        albums.put(3, afterhourscd);
+        albums.put(4, tdsotmcd);
+        albums.put(5, afterhourscassette);
+        albums.put(6, tdsotmcassette);
+        return albums;
+    }
+
+
+
+
     private static String[] albumName = {"After Hours", "The Dark Side Of The Moon", "After Hours", "The Dark Side Of The Moon",
     "After Hours", "The Dark Side Of The Moon"};
 
@@ -39,27 +76,29 @@ public class DataProvider {
 
     public static List<Items> getItems(String type) {
         List<Items> itemsList = new LinkedList<Items>();
+        Map<Integer, String[]> albums = generateData();
         int start = 0;
+        int end = 0;
         if (type.equals("Vinyl")) {
-            start = 0;
+            start = 1;
+            end = 2;
         } else if (type.equals("CD")) {
-            start = 2;
+            start = 3;
+            end = 4;
         } else if (type.equals("Cassette")) {
-            start = 4;
+            start = 5;
+            end = 6;
         }
-        for (int i = start; i < albumType.length; i++) {
-            if (albumType[i] == type) {
-                String itemAlbumType = albumType[i];
-                String itemAlbumName = albumName[i];
-                String itemAlbumArtist = albumArtist[i];
-                String itemAlbumGenre = albumGenre[i];
-                String itemAlbumIcon = albumImage1[i];
-                String itemAlbumPrice = albumPrice[i];
-                Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
-                itemsList.add(item);
-            } else {
-                break;
-            }
+        for (int i = start; i <= end; i++) {
+            String[] data = albums.get(i);
+            String itemAlbumType = data[0];
+            String itemAlbumName = data[1];
+            String itemAlbumArtist = data[2];
+            String itemAlbumGenre = data[3];
+            String itemAlbumPrice = data[4];
+            String itemAlbumIcon = data[7];
+            Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
+            itemsList.add(item);
         }
         return itemsList;
     }
