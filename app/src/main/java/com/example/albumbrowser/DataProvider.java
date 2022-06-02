@@ -33,20 +33,21 @@ public class DataProvider {
     private static String[] tdsotmcassette = {"Cassette", "The Dark Side Of The Moon", "Pink Floyd",
             "Rock, Psychedelic", "65", "91", "1973", "tdsotm_cassette1", "tdsotm_cassette2", "tdsotm_cassette3"};
 
+    private static String[] abbeyroadvinyl = {"Vinyl", "Abbey Road", "The Beatles",
+            "Rock", "70", "100", "1969", "abbeyroad_vinyl1", "abbeyroad_vinyl2", "abbeyroad_vinyl3"};
+
 
     public static Map<Integer, String[]> generateData() {
         Map<Integer, String[]> albums = new LinkedHashMap<Integer, String[]>();
         albums.put(1, afterhoursvinyl);
         albums.put(2, tdsotmvinyl);
-        albums.put(3, afterhourscd);
-        albums.put(4, tdsotmcd);
-        albums.put(5, afterhourscassette);
-        albums.put(6, tdsotmcassette);
+        albums.put(3, abbeyroadvinyl);
+        albums.put(4, afterhourscd);
+        albums.put(5, tdsotmcd);
+        albums.put(6, afterhourscassette);
+        albums.put(7, tdsotmcassette);
         return albums;
     }
-
-
-
 
     private static String[] albumName = {"After Hours", "The Dark Side Of The Moon", "After Hours", "The Dark Side Of The Moon",
     "After Hours", "The Dark Side Of The Moon"};
@@ -81,13 +82,13 @@ public class DataProvider {
         int end = 0;
         if (type.equals("Vinyl")) {
             start = 1;
-            end = 2;
+            end = 3;
         } else if (type.equals("CD")) {
-            start = 3;
-            end = 4;
+            start = 4;
+            end = 5;
         } else if (type.equals("Cassette")) {
-            start = 5;
-            end = 6;
+            start = 6;
+            end = 7;
         }
         for (int i = start; i <= end; i++) {
             String[] data = albums.get(i);
@@ -103,23 +104,20 @@ public class DataProvider {
         return itemsList;
     }
 
-    public static List<Items> getSearchedItems(String type) {
+    public static List<Items> getSearchedItems(String search) {
         List<Items> itemsList = new LinkedList<Items>();
-        String[][] searchArrays = {albumName, albumArtist, albumGenre};
-        for (int i = 0; i < searchArrays.length; i++) {
-            String[] searchArray = searchArrays[i];
-            for (int j = 0; j < searchArray.length; j++) {
-                if (searchArray[j].contains(type)) {
-                    String itemAlbumType = albumType[j];
-                    String itemAlbumName = albumName[j];
-                    String itemAlbumArtist = albumArtist[j];
-                    String itemAlbumGenre = albumGenre[j];
-                    String itemAlbumIcon = albumImage1[j];
-                    String itemAlbumPrice = albumPrice[j];
-                    Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
-                    if (!itemsList.contains(item)) {
-                        itemsList.add(item);
-                    }
+        Map<Integer, String[]> albums = generateData();
+        for (String[] data : albums.values()) {
+            if (data[1].equals(search) || data[2].equals(search) || data[3].contains(search)) {
+                String itemAlbumType = data[0];
+                String itemAlbumName = data[1];
+                String itemAlbumArtist = data[2];
+                String itemAlbumGenre = data[3];
+                String itemAlbumPrice = data[4];
+                String itemAlbumIcon = data[7];
+                Items item = new Items(itemAlbumType, itemAlbumName, itemAlbumArtist, itemAlbumGenre, itemAlbumIcon, itemAlbumPrice);
+                if (!itemsList.contains(item)) {
+                    itemsList.add(item);
                 }
             }
         }
@@ -128,24 +126,17 @@ public class DataProvider {
 
 
     public static Details getDetails(String type, String name) {
-        int start = 0;
-        if (type.equals("Vinyl")) {
-            start = 0;
-        } else if (type.equals("CD")) {
-            start = 2;
-        } else if (type.equals("Cassette")) {
-            start = 4;
-        }
+        Map<Integer, String[]> albums = generateData();
 
-        for (int i = start; i < albumName.length; i++) {
-            if (albumName[i].equals(name)) {
-                String detailsAlbumType = albumType[i];
-                String detailsAlbumName = albumName[i];
-                String detailsAlbumArtist = albumArtist[i];
-                String detailsAlbumGenre = albumGenre[i];
-                String detailsAlbumPrice = albumPrice[i];
-                String detailsAlbumRating = albumRating[i];
-                String detailsAlbumReleaseYear = albumReleaseYear[i];
+        for (String[] data : albums.values()) {
+            if (data[0].equals(type) && data[1].equals(name)) {
+                String detailsAlbumType = data[0];
+                String detailsAlbumName = data[1];
+                String detailsAlbumArtist = data[2];
+                String detailsAlbumGenre = data[3];
+                String detailsAlbumPrice = data[4];
+                String detailsAlbumRating = data[5];
+                String detailsAlbumReleaseYear = data[6];
                 Details details = new Details(detailsAlbumType, detailsAlbumName, detailsAlbumArtist, detailsAlbumGenre,
                         detailsAlbumPrice, detailsAlbumRating, detailsAlbumReleaseYear);
                 return details;
@@ -156,20 +147,13 @@ public class DataProvider {
 
     public static List<RecyclerViewImage> getRecyclerViewImages(String type, String name) {
         List<RecyclerViewImage> imagesList = new LinkedList<RecyclerViewImage>();
-        int start = 0;
-        if (type.equals("Vinyl")) {
-            start = 0;
-        } else if (type.equals("CD")) {
-            start = 2;
-        } else if (type.equals("Cassette")) {
-            start = 4;
-        }
+        Map<Integer, String[]> albums = generateData();
 
-        for (int i = start; i < albumName.length; i++) {
-            if (albumName[i].equals(name)) {
-                String rvAlbumImage1 = albumImage1[i];
-                String rvAlbumImage2 = albumImage2[i];
-                String rvAlbumImage3 = albumImage3[i];
+        for (String[] data : albums.values()) {
+            if (data[0].equals(type) && data[1].equals(name)) {
+                String rvAlbumImage1 = data[7];
+                String rvAlbumImage2 = data[8];
+                String rvAlbumImage3 = data[9];
                 RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
                 RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
                 RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
@@ -183,30 +167,20 @@ public class DataProvider {
     }
 
     public static RecyclerViewItem getRecyclerViewItem(String type, String name) {
-        int start = 0;
-        if (type.equals("Vinyl")) {
-            start = 0;
-        } else if (type.equals("CD")) {
-            start = 2;
-        } else if (type.equals("Cassette")) {
-            start = 4;
-        }
+        Map<Integer, String[]> albums = generateData();
 
-        for (int i = start; i < albumName.length; i++) {
-            if (albumName[i].equals(name)) {
-                String itemAlbumType = albumType[i];
-                String itemAlbumName = albumName[i];
-                String itemAlbumPrice = albumPrice[i];
-                String itemAlbumIcon = albumImage1[i];
+        for (String[] data : albums.values()) {
+            if (data[0].equals(type) && data[1].equals(name)) {
+                String itemAlbumType = data[0];
+                String itemAlbumName = data[1];
+                String itemAlbumPrice = data[4];
+                String itemAlbumIcon = data[7];
                 RecyclerViewItem recyclerViewItem = new RecyclerViewItem(itemAlbumType, itemAlbumName, itemAlbumPrice, itemAlbumIcon);
                 return recyclerViewItem;
             }
         }
         return null;
-    }
 
-    public static int length(){
-        return albumType.length;
     }
 
 }
