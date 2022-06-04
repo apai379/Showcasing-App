@@ -57,7 +57,6 @@ public class DetailsActivity extends AppCompatActivity {
         detailsImageAdaptor = new DetailsImageAdaptor(this, DataProvider.getImages(type, name));
         vh.viewPager.setAdapter(detailsImageAdaptor);
 
-        RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
-        MainActivity.changeMostViewed(recyclerViewItem);
+        MainActivity.changeMostViewed(type, name);
     }
 }

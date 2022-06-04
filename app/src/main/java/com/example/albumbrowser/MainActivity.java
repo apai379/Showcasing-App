@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static LinearLayoutManager linearLayoutManager;
     private static RecyclerViewAdapter recyclerViewAdapter;
     private static List<RecyclerViewItem> mostViewedList;
+    private static List<Integer> viewCount;
     private static Map<RecyclerViewItem, Integer> viewedItems;
     private static Context context;
 
@@ -64,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
         mostViewedList.add(DataProvider.getRecyclerViewItem("Cassette", "Thriller"));
         mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Abbey Road"));
         mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Thriller"));
+
+        viewCount = new ArrayList<Integer>();
+        viewCount.add(0);
+        viewCount.add(0);
+        viewCount.add(0);
+        viewCount.add(0);
+        viewCount.add(0);
 
         viewedItems = new LinkedHashMap<RecyclerViewItem, Integer>();
         viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"), 0);
@@ -139,81 +147,49 @@ public class MainActivity extends AppCompatActivity {
         return vh.searchBar.getText().toString();
     }
 
-//    public static void addRecentlyViewed(RecyclerViewItem recyclerViewItem) {
-//        Iterator<RecyclerViewItem> iterator = itemsViewed.iterator();
-//        String type = recyclerViewItem.getAlbumType();
-//        String name = recyclerViewItem.getAlbumName();
-//
-//        if (itemsViewed.isEmpty()) {
-//            itemsViewed.add(recyclerViewItem);
-//        } else {
-//            while (iterator.hasNext()){
-//                RecyclerViewItem item = iterator.next();
-//                if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)){
-//                    itemsViewed.remove(item);
-//                    break;
-//                }
-//            }
-//            itemsViewed.add(recyclerViewItem);
-//        }
-//    }
-//
-//    public static void changeRecentlyViewed() {
-//        Iterator<RecyclerViewItem> iterator1 = itemsViewed.iterator();
-//        Iterator<RecyclerViewItem> iterator2 = mostViewedList.iterator();
-//
-//        if (!itemsViewed.isEmpty()) {
-//            while (iterator1.hasNext()){
-//                RecyclerViewItem itemToAdd = iterator1.next();
-//                String type = itemToAdd.getAlbumType();
-//                String name = itemToAdd.getAlbumName();
-//                while (iterator2.hasNext()) {
-//                    RecyclerViewItem checkItem = iterator2.next();
-//                    if (checkItem.getAlbumType().equals(type) && checkItem.getAlbumName().equals(name)){
-//                        mostViewedList.remove(checkItem);
-//                        break;
-//                    }
-//                }
-//                mostViewedList.add(0, itemToAdd);
-//            }
-//            itemsViewed.clear();
-//            vh.recyclerView.setLayoutManager(linearLayoutManager);
-//            vh.recyclerView.setAdapter(recyclerViewAdapter);
-//        }
-//
-//    }
-
-    public static void changeMostViewed(RecyclerViewItem recyclerViewItem) {
-        String type = recyclerViewItem.getAlbumType();
-        String name = recyclerViewItem.getAlbumName();
-        RecyclerViewItem itemInList = null;
-        int viewCount = 1;
+    public static void changeMostViewed(String type, String name) {
+        int views = 1;
         Boolean alreadyViewed = Boolean.FALSE;
 
         for (RecyclerViewItem item : viewedItems.keySet()) {
             if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)) {
-                viewCount = viewedItems.get(item);
-                viewCount = viewCount + 1;
+                views = viewedItems.get(item);
+                views = views + 1;
                 viewedItems.remove(item);
-                viewedItems.put(recyclerViewItem, viewCount);
-                itemInList = item;
+                viewedItems.put(DataProvider.getRecyclerViewItem(type, name), views);
                 alreadyViewed = Boolean.TRUE;
                 break;
             }
         }
 
         if (!alreadyViewed) {
-            viewedItems.put(recyclerViewItem, viewCount);
-            itemInList = recyclerViewItem;
+            viewedItems.put(DataProvider.getRecyclerViewItem(type, name), views);
         }
 
         for (int i = 0; i < mostViewedList.size(); i++) {
-            if (viewedItems.get(itemInList) >= viewedItems.get(mostViewedList.get(i))) {
-                mostViewedList.add(i, recyclerViewItem);
-                mostViewedList.remove(mostViewedList.size() - 1);
+            if (mostViewedList.get(i).getAlbumType().equals(type) && mostViewedList.get(i).getAlbumName().equals(name)) {
+                mostViewedList.remove(i);
+                viewCount.remove(i);
                 break;
             }
         }
+
+
+        for (int i = 0; i < viewCount.size(); i++) {
+            if (views >= viewCount.get(i)) {
+                mostViewedList.add(i, DataProvider.getRecyclerViewItem(type, name));
+                viewCount.add(i, views);
+                break;
+            }
+        }
+
+        if (mostViewedList.size() > 5) {
+            mostViewedList.remove(5);
+            viewCount.remove(5);
+        }
+        
+        vh.recyclerView.setLayoutManager(linearLayoutManager);
+        vh.recyclerView.setAdapter(recyclerViewAdapter);
 
     }
 
