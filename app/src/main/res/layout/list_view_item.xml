@@ -20,7 +20,7 @@
             android:scaleType="fitCenter"
             android:layout_gravity="center_vertical"
             android:id="@+id/items_listview_albumIcon"
-            android:src="@drawable/afterhours_cassette1"/>
+            android:src="@drawable/afterhours_vinyl1"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
