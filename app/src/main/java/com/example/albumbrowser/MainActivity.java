@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         int views = 1;
         Boolean alreadyViewed = Boolean.FALSE;
 
+        //Get item's current view count if it's been viewed in the past
         for (RecyclerViewItem item : viewedItems.keySet()) {
             if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)) {
                 views = viewedItems.get(item);
@@ -162,10 +163,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //Record item's current and future view counts
         if (!alreadyViewed) {
             viewedItems.put(DataProvider.getRecyclerViewItem(type, name), views);
         }
 
+        //If item already exists in most viewed list, remove it and it's view count
         for (int i = 0; i < mostViewedList.size(); i++) {
             if (mostViewedList.get(i).getAlbumType().equals(type) && mostViewedList.get(i).getAlbumName().equals(name)) {
                 mostViewedList.remove(i);
@@ -174,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
+        //Add item to correct postion in most viewed list
         for (int i = 0; i < viewCount.size(); i++) {
             if (views >= viewCount.get(i)) {
                 mostViewedList.add(i, DataProvider.getRecyclerViewItem(type, name));
@@ -183,11 +186,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //Keep most viewed list to max 5 items
         if (mostViewedList.size() > 5) {
             mostViewedList.remove(5);
             viewCount.remove(5);
         }
-        
+
         vh.recyclerView.setLayoutManager(linearLayoutManager);
         vh.recyclerView.setAdapter(recyclerViewAdapter);
 

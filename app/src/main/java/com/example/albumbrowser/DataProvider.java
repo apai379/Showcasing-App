@@ -107,7 +107,6 @@ public class DataProvider {
         return itemsList;
     }
 
-
     public static Details getDetails(String type, String name) {
         Map<Integer, String[]> albums = generateData();
 
@@ -134,15 +133,6 @@ public class DataProvider {
         for (String[] data : albums.values()) {
             if (data[0].equals(type) && data[1].equals(name)) {
                 String[] imagesList = {data[7], data[8], data[9]};
-//                String rvAlbumImage1 = data[7];
-//                String rvAlbumImage2 = data[8;]
-//                String rvAlbumImage3 = data[9];
-//                RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
-//                RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
-//                RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
-//                imagesList.add(recyclerViewImage1);
-//                imagesList.add(recyclerViewImage2);
-//                imagesList.add(recyclerViewImage3);
                 return imagesList;
             }
         }
