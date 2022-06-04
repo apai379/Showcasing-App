@@ -35,7 +35,7 @@ public class ListActivity extends AppCompatActivity {
         } else if (intent.getStringExtra("type").equals("Cassette")) {
             itemsAdapter = new ItemsAdapter(this, R.layout.list_view_item, DataProvider.getItems("Cassette"));
         } else
-            itemsAdapter = new ItemsAdapter(this, R.layout.list_view_item, DataProvider.getSearchedItems(intent.getStringExtra("search")));
+            itemsAdapter = new ItemsAdapter(this, R.layout.list_view_item, DataProvider.getSearchedItems(intent.getStringExtra("type")));
 
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);

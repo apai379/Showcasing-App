@@ -59,18 +59,18 @@ public class MainActivity extends AppCompatActivity {
         context = getBaseContext();
 
         mostViewedList = new ArrayList<RecyclerViewItem>();
-        mostViewedList.add(DataProvider.getRecyclerViewItem("afterhoursvinyl"));
-        mostViewedList.add(DataProvider.getRecyclerViewItem("tdsotmvinyl"));
-        mostViewedList.add(DataProvider.getRecyclerViewItem("thrillercassette"));
-        mostViewedList.add(DataProvider.getRecyclerViewItem("abbeyroadvinyl"));
-        mostViewedList.add(DataProvider.getRecyclerViewItem("thrillervinyl"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("CD", "The Dark Side Of The Moon"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("Cassette", "Thriller"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Abbey Road"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Thriller"));
 
         viewedItems = new LinkedHashMap<RecyclerViewItem, Integer>();
-        viewedItems.put(DataProvider.getRecyclerViewItem("afterhoursvinyl"), 0);
-        viewedItems.put(DataProvider.getRecyclerViewItem("tdsotmvinyl"), 0);
-        viewedItems.put(DataProvider.getRecyclerViewItem("thrillercassette"), 0);
-        viewedItems.put(DataProvider.getRecyclerViewItem("abbeyroadvinyl"), 0);
-        viewedItems.put(DataProvider.getRecyclerViewItem("thrillervinyl"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("CD", "The Dark Side Of The Moon"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("Cassette", "Thriller"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "Abbey Road"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "Thriller"), 0);
 
         recyclerViewAdapter = new RecyclerViewAdapter(this, mostViewedList, new RecyclerViewAdapter.ItemClickListener() {
             @Override
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 String keyword = getKeyword();
                 Intent listActivity = new Intent (getBaseContext(), ListActivity.class);
 
-                listActivity.putExtra("search", keyword);
+                listActivity.putExtra("type", keyword);
                 startActivity (listActivity);
             }
         });
@@ -138,6 +138,50 @@ public class MainActivity extends AppCompatActivity {
     public static String getKeyword() {
         return vh.searchBar.getText().toString();
     }
+
+//    public static void addRecentlyViewed(RecyclerViewItem recyclerViewItem) {
+//        Iterator<RecyclerViewItem> iterator = itemsViewed.iterator();
+//        String type = recyclerViewItem.getAlbumType();
+//        String name = recyclerViewItem.getAlbumName();
+//
+//        if (itemsViewed.isEmpty()) {
+//            itemsViewed.add(recyclerViewItem);
+//        } else {
+//            while (iterator.hasNext()){
+//                RecyclerViewItem item = iterator.next();
+//                if (item.getAlbumType().equals(type) && item.getAlbumName().equals(name)){
+//                    itemsViewed.remove(item);
+//                    break;
+//                }
+//            }
+//            itemsViewed.add(recyclerViewItem);
+//        }
+//    }
+//
+//    public static void changeRecentlyViewed() {
+//        Iterator<RecyclerViewItem> iterator1 = itemsViewed.iterator();
+//        Iterator<RecyclerViewItem> iterator2 = mostViewedList.iterator();
+//
+//        if (!itemsViewed.isEmpty()) {
+//            while (iterator1.hasNext()){
+//                RecyclerViewItem itemToAdd = iterator1.next();
+//                String type = itemToAdd.getAlbumType();
+//                String name = itemToAdd.getAlbumName();
+//                while (iterator2.hasNext()) {
+//                    RecyclerViewItem checkItem = iterator2.next();
+//                    if (checkItem.getAlbumType().equals(type) && checkItem.getAlbumName().equals(name)){
+//                        mostViewedList.remove(checkItem);
+//                        break;
+//                    }
+//                }
+//                mostViewedList.add(0, itemToAdd);
+//            }
+//            itemsViewed.clear();
+//            vh.recyclerView.setLayoutManager(linearLayoutManager);
+//            vh.recyclerView.setAdapter(recyclerViewAdapter);
+//        }
+//
+//    }
 
     public static void changeMostViewed(RecyclerViewItem recyclerViewItem) {
         String type = recyclerViewItem.getAlbumType();
