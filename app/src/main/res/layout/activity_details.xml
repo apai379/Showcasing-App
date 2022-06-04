@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".DetailsActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerview_details"/>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/image_slider"/>
 
         <TextView
             android:layout_width="wrap_content"

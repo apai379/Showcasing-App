@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.albumbrowser.Adaptors.DetailsImageAdaptor;
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
 import com.example.albumbrowser.Adaptors.RecyclerViewImageAdaptor;
 import com.example.albumbrowser.Models.Details;
@@ -25,14 +27,14 @@ import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
-    RecyclerViewImageAdaptor recyclerViewImageAdapter;
+    DetailsImageAdaptor detailsImageAdaptor;
 
     class ViewHolder {
-        RecyclerView recyclerView;
+        ViewPager viewPager;
         TextView albumType, albumName, albumArtist, albumGenre, albumPrice, albumRating, albumReleaseYear;
 
         public ViewHolder(){
-            recyclerView = findViewById(R.id.recyclerview_details);
+            viewPager = findViewById(R.id.image_slider);
             albumType = findViewById(R.id.details_type);
             albumName = findViewById(R.id.details_name);
             albumArtist = findViewById(R.id.details_artist);
@@ -66,11 +68,9 @@ public class DetailsActivity extends AppCompatActivity {
         vh.albumRating.setText(details.getAlbumRating());
         vh.albumReleaseYear.setText(details.getAlbumReleaseYear());
 
-        recyclerViewImageAdapter = new RecyclerViewImageAdaptor(this, DataProvider.getRecyclerViewImages(type, name));
-        vh.recyclerView = findViewById(R.id.recyclerview_details);
-        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        vh.recyclerView.setLayoutManager(linearLayoutManager);
-        vh.recyclerView.setAdapter(recyclerViewImageAdapter);
+        vh.viewPager = findViewById(R.id.image_slider);
+        detailsImageAdaptor = new DetailsImageAdaptor(this, DataProvider.getImages(type, name));
+        vh.viewPager.setAdapter(detailsImageAdaptor);
 
         RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
         MainActivity.addRecentlyViewed(recyclerViewItem);

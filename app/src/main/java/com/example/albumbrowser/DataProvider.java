@@ -132,21 +132,21 @@ public class DataProvider {
         return null;
     }
 
-    public static List<RecyclerViewImage> getRecyclerViewImages(String type, String name) {
-        List<RecyclerViewImage> imagesList = new LinkedList<RecyclerViewImage>();
+    public static String[] getImages(String type, String name) {
         Map<Integer, String[]> albums = generateData();
 
         for (String[] data : albums.values()) {
             if (data[0].equals(type) && data[1].equals(name)) {
-                String rvAlbumImage1 = data[7];
-                String rvAlbumImage2 = data[8];
-                String rvAlbumImage3 = data[9];
-                RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
-                RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
-                RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
-                imagesList.add(recyclerViewImage1);
-                imagesList.add(recyclerViewImage2);
-                imagesList.add(recyclerViewImage3);
+                String[] imagesList = {data[7], data[8], data[9]};
+//                String rvAlbumImage1 = data[7];
+//                String rvAlbumImage2 = data[8;]
+//                String rvAlbumImage3 = data[9];
+//                RecyclerViewImage recyclerViewImage1 = new RecyclerViewImage(rvAlbumImage1);
+//                RecyclerViewImage recyclerViewImage2 = new RecyclerViewImage(rvAlbumImage2);
+//                RecyclerViewImage recyclerViewImage3 = new RecyclerViewImage(rvAlbumImage3);
+//                imagesList.add(recyclerViewImage1);
+//                imagesList.add(recyclerViewImage2);
+//                imagesList.add(recyclerViewImage3);
                 return imagesList;
             }
         }
