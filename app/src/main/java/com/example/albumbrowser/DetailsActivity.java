@@ -40,10 +40,9 @@ public class DetailsActivity extends AppCompatActivity {
         vh = new ViewHolder();
 
         Intent intent = getIntent();
-        String type = intent.getStringExtra("type");
-        String name = intent.getStringExtra("name");
+        String key = intent.getStringExtra("key");
 
-        Details details = DataProvider.getDetails(type, name);
+        Details details = DataProvider.getDetails(key);
 
         vh.albumType.setText(details.getAlbumType());
         vh.albumName.setText(details.getAlbumName());
@@ -54,11 +53,9 @@ public class DetailsActivity extends AppCompatActivity {
         vh.albumReleaseYear.setText(details.getAlbumReleaseYear());
 
         vh.viewPager = findViewById(R.id.image_slider);
-        detailsImageAdaptor = new DetailsImageAdaptor(this, DataProvider.getImages(type, name));
+        detailsImageAdaptor = new DetailsImageAdaptor(this, DataProvider.getImages(key));
         vh.viewPager.setAdapter(detailsImageAdaptor);
 
-        RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
-        MainActivity.addRecentlyViewed(recyclerViewItem);
-        MainActivity.changeRecentlyViewed();
+        MainActivity.changeMostViewed(DataProvider.getRecyclerViewItem(key));
     }
 }
