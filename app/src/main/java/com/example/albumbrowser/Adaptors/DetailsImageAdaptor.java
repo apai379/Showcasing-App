@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.example.albumbrowser.Models.RecyclerViewImage;
-
 public class DetailsImageAdaptor extends PagerAdapter {
     private Context context;
     private String[] imageArray;

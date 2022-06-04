@@ -1,15 +1,19 @@
 package com.example.albumbrowser.Adaptors;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.albumbrowser.DetailsActivity;
 import com.example.albumbrowser.Models.Items;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 import com.example.albumbrowser.R;
@@ -17,13 +21,14 @@ import com.example.albumbrowser.R;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    List<RecyclerViewItem> recyclerViewItems;
-    Context context;
+    private List<RecyclerViewItem> recyclerViewItems;
+    private Context context;
+    private ItemClickListener itemClickListener;
 
-
-    public RecyclerViewAdapter(Context context, List<RecyclerViewItem> recyclerViewItems) {
+    public RecyclerViewAdapter(Context context, List<RecyclerViewItem> recyclerViewItems, ItemClickListener itemClickListener) {
         this.recyclerViewItems = recyclerViewItems;
         this.context = context;
+        this.itemClickListener = itemClickListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -60,6 +65,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewholder.albumTypeTextView.setText(currentItem.getAlbumType());
         viewholder.albumNameTextView.setText(currentItem.getAlbumName());
         viewholder.albumPriceTextView.setText(currentItem.getAlbumPrice());
+
+        viewholder.itemView.setOnClickListener(view -> {
+            itemClickListener.onItemClick(currentItem);
+        });
     }
 
     @Override
@@ -67,6 +76,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return recyclerViewItems.size();
     }
 
-
+    public interface ItemClickListener {
+        void onItemClick(RecyclerViewItem recyclerViewItem);
+    }
 
 }

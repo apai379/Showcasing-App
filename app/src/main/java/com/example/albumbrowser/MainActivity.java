@@ -1,5 +1,6 @@
 package com.example.albumbrowser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
-import com.example.albumbrowser.Models.RecyclerViewImage;
+import com.example.albumbrowser.Models.Items;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
 import java.util.Iterator;
@@ -56,7 +57,18 @@ public class MainActivity extends AppCompatActivity {
 
         recentlyViewedList = new LinkedList<RecyclerViewItem>();
         addItemsToRVL = new LinkedList<RecyclerViewItem>();
-        recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList);
+        recyclerViewAdapter = new RecyclerViewAdapter(this, recentlyViewedList, new RecyclerViewAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerViewItem recyclerViewItem) {
+                String type = recyclerViewItem.getAlbumType();
+                String name = recyclerViewItem.getAlbumName();
+
+                Intent detailsActivity = new Intent (getBaseContext(), DetailsActivity.class);
+                detailsActivity.putExtra("type", type);
+                detailsActivity.putExtra("name", name);
+                startActivity(detailsActivity);
+            }
+        });
         vh.recyclerView = findViewById(R.id.recyclerview);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         vh.recyclerView.setLayoutManager(linearLayoutManager);
@@ -150,8 +162,6 @@ public class MainActivity extends AppCompatActivity {
                 recentlyViewedList.add(0, itemToAdd);
             }
             addItemsToRVL.clear();
-            recyclerViewAdapter = new RecyclerViewAdapter(context, recentlyViewedList);
-            linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             vh.recyclerView.setLayoutManager(linearLayoutManager);
             vh.recyclerView.setAdapter(recyclerViewAdapter);
         }

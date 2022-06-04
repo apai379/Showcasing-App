@@ -1,13 +1,9 @@
 package com.example.albumbrowser;
 
 import com.example.albumbrowser.Models.Details;
-import com.example.albumbrowser.Models.DetailsImages;
 import com.example.albumbrowser.Models.Items;
-import com.example.albumbrowser.Models.RecyclerViewImage;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;

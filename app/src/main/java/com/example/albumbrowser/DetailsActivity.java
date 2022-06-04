@@ -1,32 +1,17 @@
 package com.example.albumbrowser;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.albumbrowser.Adaptors.DetailsImageAdaptor;
-import com.example.albumbrowser.Adaptors.RecyclerViewAdapter;
-import com.example.albumbrowser.Adaptors.RecyclerViewImageAdaptor;
 import com.example.albumbrowser.Models.Details;
-import com.example.albumbrowser.Models.RecyclerViewImage;
 import com.example.albumbrowser.Models.RecyclerViewItem;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class DetailsActivity extends AppCompatActivity {
-    LinearLayoutManager linearLayoutManager;
     DetailsImageAdaptor detailsImageAdaptor;
 
     class ViewHolder {
@@ -75,6 +60,5 @@ public class DetailsActivity extends AppCompatActivity {
         RecyclerViewItem recyclerViewItem = DataProvider.getRecyclerViewItem(type, name);
         MainActivity.addRecentlyViewed(recyclerViewItem);
         MainActivity.changeRecentlyViewed();
-
     }
 }
