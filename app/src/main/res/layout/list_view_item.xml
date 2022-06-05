@@ -13,14 +13,21 @@
         android:background="@color/grey"
         android:padding="8dp">
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:id="@+id/items_listview_albumIcon"
-            android:src="@drawable/afterhours_vinyl1"/>
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:id="@+id/items_listview_albumIcon"
+                android:src="@drawable/afterhours_vinyl1"/>
+
+        </androidx.cardview.widget.CardView>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -45,6 +52,7 @@
                 android:layout_below="@id/items_listview_albumType"
                 android:textSize="24sp"
                 android:id="@+id/items_listview_albumName"
+                android:textColor="@color/black"
                 android:text="After Hours"
                 android:autoSizeTextType="uniform"
                 android:layout_gravity="left" />
@@ -75,9 +83,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:id="@+id/items_listview_albumPrice"
             android:text="Price"
+            android:textColor="@color/black"
             android:gravity="right"
             android:layout_gravity="bottom" />
 

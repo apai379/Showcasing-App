@@ -9,64 +9,100 @@
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="248dp"
+        android:paddingTop="8dp"
         android:id="@+id/image_slider"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:id="@+id/details_type"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardBackgroundColor="@color/grey"
+        app:cardCornerRadius="16dp"
+        style="@style/CategoryCardStyle">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:id="@+id/details_name"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Artist"
-            android:id="@+id/details_artist"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:id="@+id/details_name"
+                android:textSize="32sp"
+                android:textColor="@color/black"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:autoSizeTextType="uniform" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Genre"
-            android:id="@+id/details_genre"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:gravity="right"
+                android:textSize="32sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/details_price"
+                android:textColor="@color/black"
+                style="@style/CategoryTextStyle" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Release Year"
-            android:id="@+id/details_year"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                android:layout_below="@id/details_name"
+                android:id="@+id/details_type"
+                android:paddingLeft="16dp"
+                android:textColor="@color/black" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating"
-            android:id="@+id/details_rating"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist"
+                android:layout_below="@id/details_type"
+                android:id="@+id/details_artist"
+                android:textColor="@color/black"
+                style="@style/CategoryTextStyle" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Price"
-            android:id="@+id/details_price"
-            android:textColor="@color/black"
-            style="@style/CategoryTextStyle" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre"
+                android:layout_below="@id/details_artist"
+                android:id="@+id/details_genre"
+                android:textColor="@color/black"
+                style="@style/CategoryTextStyle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Year"
+                android:id="@+id/details_year"
+                android:layout_below="@id/details_genre"
+                android:textColor="@color/black"
+                style="@style/CategoryTextStyle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating"
+                android:layout_below="@id/details_year"
+                android:id="@+id/details_rating"
+                android:textColor="@color/black"
+                style="@style/CategoryTextStyle" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

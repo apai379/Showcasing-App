@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -11,6 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/search_function"
         android:orientation="horizontal">
 
         <EditText
@@ -24,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="48dp"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             android:src="@drawable/searchbar_icon"
             android:id="@+id/search_button"/>
 
@@ -34,29 +36,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Most Viewed"
+        android:layout_below="@id/search_function"
+        android:id="@+id/most_viewed"
         android:textSize="16sp"
         android:gravity="center"
-        android:textColor="@color/black"
-        style="@style/CategoryTextStyle" />
+        android:textColor="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/most_viewed"
         android:id="@+id/recyclerview"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_above="@id/cardview_cd"
         android:id="@+id/cardview_vinyl"
-        android:backgroundTint="#2962FF"
+        android:backgroundTint="@color/cyan_500"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:text="Vinyl"
+            android:layout_gravity="center"
             style="@style/CategoryTextStyle" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/vinyl_icon"/>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -64,29 +78,51 @@
         android:layout_height="wrap_content"
         android:id="@+id/cardview_cd"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#33691E"
+        android:layout_above="@id/cardview_cassette"
+        app:cardCornerRadius="16dp"
+        android:backgroundTint="@color/red_500"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:text="CD"
+            android:layout_gravity="center"
             style="@style/CategoryTextStyle" />
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:paddingLeft="8dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/cd_icon"/>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_alignParentBottom="true"
         android:id="@+id/cardview_cassette"
-        android:backgroundTint="#6200EA"
+        android:backgroundTint="@color/green_500"
         style="@style/CategoryCardStyle">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:text="Cassette"
+            android:layout_gravity="center"
             style="@style/CategoryTextStyle" />
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:paddingLeft="8dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/cassette_icon"/>
+
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+</RelativeLayout>

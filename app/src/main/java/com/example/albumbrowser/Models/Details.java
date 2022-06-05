@@ -15,11 +15,11 @@ public class Details {
     }
 
     public String getAlbumType() {
-        return "Type: " + albumType;
+        return albumType;
     }
 
     public String getAlbumName() {
-        return "Name: " + albumName;
+        return albumName;
     }
 
     public String getAlbumArtist() {
@@ -31,7 +31,7 @@ public class Details {
     }
 
     public String getAlbumPrice() {
-        return "Price: $" + albumPrice;
+        return "$" + albumPrice;
     }
 
     public String getAlbumRating() {

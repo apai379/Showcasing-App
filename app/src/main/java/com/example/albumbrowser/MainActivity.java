@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private static List<RecyclerViewItem> mostViewedList;
     private static List<Integer> viewCount;
     private static Map<RecyclerViewItem, Integer> viewedItems;
-    private static Context context;
 
     class ViewHolder {
         EditText searchBar;
@@ -57,14 +56,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         vh = new ViewHolder();
 
-        context = getBaseContext();
-
         mostViewedList = new ArrayList<RecyclerViewItem>();
         mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "After Hours"));
         mostViewedList.add(DataProvider.getRecyclerViewItem("CD", "The Dark Side Of The Moon"));
         mostViewedList.add(DataProvider.getRecyclerViewItem("Cassette", "Thriller"));
         mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Abbey Road"));
-        mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Thriller"));
+        mostViewedList.add(DataProvider.getRecyclerViewItem("Vinyl", "Blackstar"));
 
         viewCount = new ArrayList<Integer>();
         viewCount.add(0);
@@ -78,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         viewedItems.put(DataProvider.getRecyclerViewItem("CD", "The Dark Side Of The Moon"), 0);
         viewedItems.put(DataProvider.getRecyclerViewItem("Cassette", "Thriller"), 0);
         viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "Abbey Road"), 0);
-        viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "Thriller"), 0);
+        viewedItems.put(DataProvider.getRecyclerViewItem("Vinyl", "Blackstar"), 0);
 
         recyclerViewAdapter = new RecyclerViewAdapter(this, mostViewedList, new RecyclerViewAdapter.ItemClickListener() {
             @Override
